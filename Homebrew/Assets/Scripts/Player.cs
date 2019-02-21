@@ -9,11 +9,13 @@ public class Player : MonoBehaviour {
     private bool aimingMode;
     public float bottlespeed;
     public GameObject launcher;
-
+    public GameObject reticle;
 
     // Use this for initialization
     void Start() {
         bottle = (GameObject)Resources.Load("Prefabs/bottle");
+
+        reticle.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,8 +42,13 @@ public class Player : MonoBehaviour {
             //bottleClone.transform.position = 
             aimingMode = false;
             bottleClone.GetComponent<Rigidbody2D>().isKinematic = false;
-            bottleClone.GetComponent<Rigidbody2D>().velocity = mouseDelta * bottlespeed;
+            Vector3 pvelocity = mouseDelta;
+            pvelocity.Normalize();
+            bottleClone.GetComponent<Rigidbody2D>().velocity = pvelocity * bottlespeed;
+            Interaction.ApplyToBottle(bottleClone, Elements.FIRE, Elements.FIRE);
             bottleClone = null;
+
+            reticle.SetActive(false);
         }
 
         if (Input.GetMouseButtonDown(0)) {
@@ -53,19 +60,28 @@ public class Player : MonoBehaviour {
             bottleClone.transform.position = launcher.transform.position;
             //set it to isKinematic for now
             bottleClone.GetComponent<Rigidbody2D>().isKinematic = true;
+
+            reticle.SetActive(true);
         }
 
         if (!aimingMode) return;
         
         //limit mouse delta to the radius of the slingshot spherecollider
         float maxmagnitude = launcher.GetComponent<CircleCollider2D>().radius;
+
+        Vector3 absMouseDelta = mouseDelta;
+        absMouseDelta.Normalize();
+        absMouseDelta = absMouseDelta * maxmagnitude;
+
         if (mouseDelta.magnitude > maxmagnitude) {
             mouseDelta.Normalize();
             mouseDelta *= maxmagnitude;
         }
+
+        reticle.transform.position = launcher.transform.position + absMouseDelta;
+
         //move the object to this new position 
-        Vector3 projPos = launcher.transform.position + mouseDelta;
-        bottleClone.transform.position = projPos;
+        bottleClone.transform.position = launcher.transform.position + mouseDelta;
     }
 }
 

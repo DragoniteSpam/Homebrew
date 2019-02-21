@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class DefaultPotion : MonoBehaviour {
-    void OnCollisionEnter(Collision other) {
-        if (other.gameObject.GetComponent<DefaultPotion>() == null) {
-            return;
-        }
+public class DefaultPotion {
+    public DefaultPotion() {
+        
+    }
 
-        // i guess you could make an explosion effect when you collide with the floor but start with this
+    public void Interact(GameObject what) {
+        Debug.Log("Potion collided with: " + what.name);
     }
 }
