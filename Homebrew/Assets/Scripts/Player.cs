@@ -21,13 +21,19 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        Vector2 pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x + horizontal, -6, 6);
-        transform.position = pos;
+        
+        /*
+         * Do gravity next
+         */
 
         Vector3 scale = GetComponent<Transform>().localScale;
         scale.x = (horizontal > 0 ? 1 : (horizontal < 0) ? -1 : scale.x);
         GetComponent<Transform>().localScale = scale;
+
+        if (Input.GetButtonDown("Jump")) {
+            Vector2 jump = new Vector2(0, 5);
+            gameObject.GetComponent<Rigidbody2D>().velocity = jump;
+        }
 
         //get current mouse position in 2d screen coordinates
         Vector3 mousePos2D = Input.mousePosition;

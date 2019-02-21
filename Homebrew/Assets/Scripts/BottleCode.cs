@@ -5,6 +5,6 @@ public class BottleCode : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision) {
         potionEffect.Interact(collision.gameObject);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

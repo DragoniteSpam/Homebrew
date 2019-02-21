@@ -270,7 +270,6 @@ GameObject:
   - component: {fileID: 846603755}
   - component: {fileID: 846603758}
   - component: {fileID: 846603757}
-  - component: {fileID: 846603756}
   m_Layer: 0
   m_Name: Rect
   m_TagString: Untagged
@@ -291,31 +290,6 @@ Transform:
   m_Father: {fileID: 2055789934}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &846603756
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 846603754}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!23 &846603757
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -401,6 +375,10 @@ Prefab:
         type: 2}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1143289516384528, guid: 7181f94a9ec6922448cc9ec8cb2c7398, type: 2}
+      propertyPath: m_TagString
+      value: floor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7181f94a9ec6922448cc9ec8cb2c7398, type: 2}
@@ -566,7 +544,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1517261720}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35016584, y: 2.2431006, z: -0.05426812}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2055789934}
@@ -671,7 +649,7 @@ GameObject:
   - component: {fileID: 1959406875}
   - component: {fileID: 1959406876}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: Nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,6 +722,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2055789934}
   - component: {fileID: 2055789933}
+  - component: {fileID: 2055789936}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -770,6 +749,7 @@ MonoBehaviour:
   bottlespeed: 8
   launcher: {fileID: 1538900520}
   reticle: {fileID: 1517261720}
+  collisionDetection: {fileID: 0}
 --- !u!4 &2055789934
 Transform:
   m_ObjectHideFlags: 0
@@ -787,6 +767,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2055789936
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055789932}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2060402767
 GameObject:
   m_ObjectHideFlags: 0
