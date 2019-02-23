@@ -3,7 +3,7 @@
 public class Player : MonoBehaviour {
     public float maxSpeed = 4f;
     public float friction = 0.2f;
-    public float jump = 12f;
+    public float jump = 4f;
     public GameObject bottle;
     public GameObject bottleClone;
     public float attackX;                  //Attack x position
@@ -13,17 +13,17 @@ public class Player : MonoBehaviour {
     public float launchRadius;
     public GameObject reticle;
 
-    private float jumpTime;
+    private float timeSinceJump;
 
     // Use this for initialization
     void Start() {
-        jumpTime = 0f;
+        timeSinceJump = 0f;
 
         bottle = (GameObject)Resources.Load("Prefabs/bottle");
 
         reticle.SetActive(false);
 
-        GetComponent<Homebrew>().Set(Homebrew.FLAG_PLAYER);
+        GetComponent<HomebrewFlags>().Set(HomebrewFlags.FLAG_PLAYER);
     }
 
     // Update is called once per frame
@@ -45,17 +45,29 @@ public class Player : MonoBehaviour {
         Vector2 velocity = plugandplay.velocity;
         velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
 
-        bool grounded = Physics2D.OverlapPoint(new Vector2(transform.position.x, transform.position.y - 0.75f), Homebrew.EnvironmentalCollisionMask());
-        
+        bool grounded = Physics2D.OverlapPoint(new Vector2(transform.position.x, transform.position.y - 0.75f), HomebrewFlags.EnvironmentalCollisionMask());
+
         if (grounded) {
             if (Input.GetButtonDown("Jump")) {
-                velocity = velocity + Vector2.up * jump;
+                timeSinceJump = 0f;
             }
-
-            velocity = Vector2.Lerp(velocity, Vector2.zero, friction);
+            
+            velocity.x = Mathf.Lerp(velocity.x, 0f, friction);
         }
 
+        timeSinceJump = timeSinceJump + Time.deltaTime;
+
         plugandplay.velocity = velocity;
+
+        // after the velocity has been set, process jumping. this re-reads and resets the velocity so if
+        // you do it before it's set above it'll get overwritten.
+
+        if (timeSinceJump < 0.15f && Input.GetButton("Jump")) {
+            plugandplay.gravityScale = 0f;
+            Jump();
+        } else {
+            plugandplay.gravityScale = 1f;
+        }
 
         /*
          * Throw
@@ -111,6 +123,12 @@ public class Player : MonoBehaviour {
 
         //move the object to this new position 
         bottleClone.transform.position = transform.position + mouseDelta;
+    }
+
+    private void Jump() {
+        Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
+        velocity = velocity + Vector2.up * jump;
+        GetComponent<Rigidbody2D>().velocity = velocity;
     }
 }
 

@@ -4,7 +4,7 @@
  * My love for bitwise and hatred for Unity tags is going to be my downfall
  */
 
-public class Homebrew : MonoBehaviour {
+public class HomebrewFlags : MonoBehaviour {
     public const byte BOTTLE = 8;
     public const byte FOE = 9;
     public const byte ENVIRONMENT = 10;

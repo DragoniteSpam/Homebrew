@@ -449,6 +449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1039093607}
   - component: {fileID: 1039093606}
+  - component: {fileID: 1039093608}
   m_Layer: 0
   m_Name: PersistentStuff
   m_TagString: Untagged
@@ -480,6 +481,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1039093608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1039093605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52fdc65526bfb1342bb00e653d00b2ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1338153798
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   friction: 0.2
-  jump: 12
+  jump: 1
   bottle: {fileID: 0}
   bottleClone: {fileID: 0}
   attackX: 0
