@@ -1,26 +1,36 @@
 ﻿using UnityEngine;
 
 public class Patrol : MonoBehaviour {
-
-    public float speed;
-    public float distance;
-
-    private bool movingRight = true;
-
-    public Transform groundDetection;
+    public float maxSpeed = 4;
 
     private void Update() {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        float currentSpeed = maxSpeed * (transform.localScale.x > 0 ? 1f : -1f);
+        transform.Translate(Vector2.right * currentSpeed * Time.deltaTime);
 
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
-        if (groundInfo.collider == false) {
-            if (movingRight == true) {
-                transform.eulerAngles = new Vector3(0, -180, 0);
-                movingRight = false;
-            } else {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                movingRight = true;
+        Vector2 position2D = new Vector2(transform.position.x, transform.position.y);
+        Vector2 testPoint = position2D + Vector2.right * (transform.localScale.x > 0 ? 2f : -2f);
+
+        // does not seek immediately underneath the foe. seeks off to the side instead.
+        bool grounded = Physics2D.OverlapPoint(testPoint + Vector2.down * 0.75f, Homebrew.EnvironmentalCollisionMask());
+        bool walled = Physics2D.OverlapPoint(testPoint, Homebrew.EnvironmentalCollisionMask());
+        
+        if (!grounded || walled) {
+            Turn();
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        Homebrew flagData = other.gameObject.GetComponent<Homebrew>();
+        if (flagData != null) {
+            if (flagData.Get(Homebrew.FLAG_PLAYER)) {
+                Physics2D.IgnoreCollision(GetComponentInChildren<Collider2D>(), other.gameObject.GetComponentInChildren<Collider2D>());
             }
         }
+    }
+
+    private void Turn() {
+        Vector3 scale = transform.localScale;
+        scale.x = -scale.x;
+        transform.localScale = scale;
     }
 }
