@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 
 /*
- * My love for bitwise and hatred for Unity tags is going to be my downfall
+ * My love for bitwise and hatred of Unity tags is going to be my downfall
  */
 
 public class HomebrewFlags : MonoBehaviour {
+    /*
+     * collision flags - these are the physics layers
+     */
+    
     public const byte BOTTLE = 8;
     public const byte FOE = 9;
     public const byte ENVIRONMENT = 10;
@@ -24,24 +28,30 @@ public class HomebrewFlags : MonoBehaviour {
      * non-static stuff (mostly)
      */
 
-    public const byte FLAG_PLAYER = 0;
-
-    void Awake() {
-        Flags = 0;
-    }
-
     public void Set(byte what) {
         Flags = Flags | (1 << what);
+    }
+
+    public void Set(Elements what) {
+        Set((byte)what);
     }
 
     public void Toggle(byte what) {
         Flags = Flags ^ (1 << what);
     }
 
+    public void Toggle(Elements what) {
+        Toggle((byte)what);
+    }
+
     public bool Get(byte what) {
         return (Flags & (1 << what)) == 1;
     }
 
+    public bool Get(Elements what) {
+        return Get((byte)what);
+    }
+    
     public int Flags {
         get; private set;
     }

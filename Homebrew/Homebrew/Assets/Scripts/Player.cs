@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(HomebrewFlags))]
 public class Player : MonoBehaviour {
     private const float DASH_THRESHOLD = 0.5f;
     private const float MOVE_THRESHOLD = 0.1f;
@@ -9,7 +10,6 @@ public class Player : MonoBehaviour {
     public float friction = 0.2f;
     public float jump = 4f;
     public GameObject bottle;
-    public GameObject bottleClone;
     public float attackX;                  //Attack x position
     public float attackY;                  //Attack y position
     private bool aimingMode;
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
 
         reticle.SetActive(false);
 
-        GetComponent<HomebrewFlags>().Set(HomebrewFlags.FLAG_PLAYER);
+        GetComponent<HomebrewFlags>().Set(Elements.PLAYER);
     }
 
     // Update is called once per frame
@@ -124,12 +124,21 @@ public class Player : MonoBehaviour {
 
         if (Input.GetButtonUp("Potion Chuck")) {
             aimingMode = false;
-            bottleClone.GetComponent<Rigidbody2D>().isKinematic = false;
+
             Vector3 pvelocity = mouseDelta;
             pvelocity.Normalize();
+
+            GameObject bottleClone = Instantiate(bottle);
+            bottleClone.transform.position = transform.position;
+            bottleClone.GetComponent<Rigidbody2D>().isKinematic = false;
             bottleClone.GetComponent<Rigidbody2D>().velocity = pvelocity * bottlespeed;
-            Interaction.ApplyToBottle(bottleClone, Elements.FIRE, Elements.FIRE);
-            bottleClone = null;
+
+            bottleClone.transform.position = reticle.transform.position;
+
+            /*
+             * when potion choice is set up: don't do this anymore
+             */
+            PersistentInteraction.ApplyToBottle(bottleClone, Elements.FIRE, Elements.FIRE);
 
             reticle.SetActive(false);
         }
@@ -137,12 +146,6 @@ public class Player : MonoBehaviour {
         if (Input.GetButtonDown("Potion Chuck")) {
             //the player has pressed the mouse button down while over the slingshot 
             aimingMode = true;
-            //instantiate a projectile
-            bottleClone = Instantiate(bottle) as GameObject;
-            //start it at launch point
-            bottleClone.transform.position = transform.position;
-            //set it to isKinematic for now
-            bottleClone.GetComponent<Rigidbody2D>().isKinematic = true;
 
             reticle.SetActive(true);
         }
@@ -162,9 +165,6 @@ public class Player : MonoBehaviour {
         }
 
         reticle.transform.position = transform.position + absMouseDelta;
-
-        //move the object to this new position 
-        bottleClone.transform.position = transform.position + mouseDelta;
     }
 
     private void Jump() {

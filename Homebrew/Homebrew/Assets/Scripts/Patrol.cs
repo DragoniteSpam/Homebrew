@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(HomebrewFlags))]
 public class Patrol : MonoBehaviour {
     public float maxSpeed = 4;
+    
+    void Start() {
+        GetComponent<HomebrewFlags>().Set(Elements.PLAYER);
+    }
 
     private void Update() {
         float currentSpeed = maxSpeed * (transform.localScale.x > 0 ? 1f : -1f);
@@ -19,10 +24,11 @@ public class Patrol : MonoBehaviour {
         }
     }
 
+    // collision with player. not collision with potions. those are checked in the potions.
     void OnCollisionEnter2D(Collision2D other) {
         HomebrewFlags flagData = other.gameObject.GetComponent<HomebrewFlags>();
         if (flagData != null) {
-            if (flagData.Get(HomebrewFlags.FLAG_PLAYER)) {
+            if (flagData.Get(Elements.PLAYER)) {
                 Physics2D.IgnoreCollision(GetComponentInChildren<Collider2D>(), other.gameObject.GetComponentInChildren<Collider2D>());
             }
         }
