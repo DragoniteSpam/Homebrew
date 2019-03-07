@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 /*
  * I'm thinking about separating the code for the projectile in physical space and
@@ -7,17 +8,20 @@
  */
 
 public class PhysicalBottle : MonoBehaviour {
+    public static List<PhysicalBottle> allBottles = new List<PhysicalBottle>();
+    
     public PotionMeta metadata;
 
+    void Awake() {
+        allBottles.Add(this);
+    }
+
+    void OnDestroy() {
+        allBottles.Remove(this);
+    }
+
+    // this will only fire for walls and floors and stuff since nothing else responds to this physics layer
     void OnCollisionEnter2D(Collision2D collision) {
-        Interactible collisionInteraction = collision.gameObject.GetComponent<Interactible>();
-
-        if (collisionInteraction != null) {
-            collisionInteraction.Interact(Flags);
-        } else {
-            Debug.Log(collision.gameObject.name + " doesn't have any defined interaction. Should probably just be ignored since the only things that won't have them are the walls and floor and stuff, but if you want to do anything with them they should go here.");
-        }
-
         Destroy(gameObject);
     }
 
