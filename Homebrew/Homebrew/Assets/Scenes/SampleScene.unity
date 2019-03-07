@@ -317,7 +317,6 @@ GameObject:
   - component: {fileID: 625412778}
   - component: {fileID: 625412781}
   - component: {fileID: 625412779}
-  - component: {fileID: 625412780}
   - component: {fileID: 625412782}
   m_Layer: 9
   m_Name: Enemy
@@ -352,6 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951e8a774d6c2dd48bf543e68fa309b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   maxSpeed: 4
 --- !u!50 &625412778
 Rigidbody2D:
@@ -384,20 +384,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 075cca37df4e4fd46ba5c33865a49fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   maxSpeed: 4
   speed: 2
---- !u!114 &625412780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 625412775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18d72eeaf4913b241b70993438bafbfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
 --- !u!114 &625412781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a814de7ed2979345a5cec06f05c2d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
 --- !u!1001 &926922622
 Prefab:
   m_ObjectHideFlags: 0
