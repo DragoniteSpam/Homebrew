@@ -164,21 +164,21 @@ public class Player : MonoBehaviour {
             reticle.SetActive(true);
         }
 
-        if (!aimingMode) return;
-        
-        //limit mouse delta to the radius of the slingshot spherecollider
-        float maxmagnitude = launchRadius;
+        if (aimingMode) {
+            //limit mouse delta to the radius of the slingshot spherecollider
+            float maxmagnitude = launchRadius;
 
-        Vector3 absMouseDelta = mouseDelta;
-        absMouseDelta.Normalize();
-        absMouseDelta = absMouseDelta * maxmagnitude;
+            Vector3 absMouseDelta = mouseDelta;
+            absMouseDelta.Normalize();
+            absMouseDelta = absMouseDelta * maxmagnitude;
 
-        if (mouseDelta.magnitude > maxmagnitude) {
-            mouseDelta.Normalize();
-            mouseDelta *= maxmagnitude;
+            if (mouseDelta.magnitude > maxmagnitude) {
+                mouseDelta.Normalize();
+                mouseDelta *= maxmagnitude;
+            }
+
+            reticle.transform.position = transform.position + absMouseDelta;
         }
-
-        reticle.transform.position = transform.position + absMouseDelta;
     }
 
     private void Jump() {
