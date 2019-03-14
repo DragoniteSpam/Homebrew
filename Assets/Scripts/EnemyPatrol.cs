@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(HomebrewFlags))]
-public class Patrol : Foe {
+public class EnemyPatrol : Enemy {
     public float maxSpeed = 4;
     
     protected override void Awake() {
@@ -34,5 +34,13 @@ public class Patrol : Foe {
         Vector3 scale = transform.localScale;
         scale.x = -scale.x;
         transform.localScale = scale;
+    }
+
+    public override void Kill(GameObject who) {
+        base.Kill(who);
+    }
+
+    public override void Interact(int potionFlags) {
+        base.Interact(potionFlags);
     }
 }

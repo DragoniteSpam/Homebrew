@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Responsive : MonoBehaviour {
     public int health = 1;
+
+    public List<Elements> weaknesses = new List<Elements>();
 
     protected virtual void Awake() {
     }
@@ -12,49 +15,32 @@ public class Responsive : MonoBehaviour {
         foreach (PhysicalBottle bottle in PhysicalBottle.allBottles) {
             if (collider.bounds.Contains(bottle.transform.position) && bottle.owner != gameObject) {
                 Interact(bottle.Flags);
+                UniversalInteraction(bottle.Flags);
                 Destroy(bottle.gameObject);
             }
         }
     }
 
     public virtual void Kill(GameObject whoDidIt) {
-
+        Destroy(gameObject);
     }
 
     public virtual void Interact(int potionFlags) {
         int myFlags = GetComponent<HomebrewFlags>().Flags;
 
-        /*Whoever messes with this next, look down here
-        You probably want to deduct health when hit by valid elements,
-        but you can do other things too, like spawn a cloud of gas
-        around a detector or something
-        
-        and also comment out this message, i just did this to get your attention*/
+        foreach (Elements element in weaknesses) {
+            if (PersistentInteraction.Recognized(potionFlags, element)) {
+                if (--health <= 0) {
+                    Kill(null);
+                }
+            }
+        }
+    }
 
-        if (PersistentInteraction.Recognized(potionFlags, Elements.FIRE)) {
-            if (--health <= 0) {
-                Kill(null);
-            }
-        }
-        if (PersistentInteraction.Recognized(potionFlags, Elements.WATER)) {
-            if (--health <= 0) {
-                Kill(null);
-            }
-        }
-        if (PersistentInteraction.Recognized(potionFlags, Elements.WIND)) {
-            if (--health <= 0) {
-                Kill(null);
-            }
-        }
-        if (PersistentInteraction.Recognized(potionFlags, Elements.THUNDER)) {
-            if (--health <= 0) {
-                Kill(null);
-            }
-        }
-        if (PersistentInteraction.Recognized(potionFlags, Elements.EARTH)) {
-            if (--health <= 0) {
-                Kill(null);
-            }
+    protected void UniversalInteraction(int potionFlags) {
+        // Not a fan but
+        if (potionFlags == PersistentInteraction.Combination(Elements.FIRE, Elements.THUNDER)) {
+            // Plasma
         }
     }
 }

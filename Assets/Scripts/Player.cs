@@ -17,13 +17,22 @@ public class Player : MonoBehaviour {
     public float launchRadius;
     public GameObject reticle;
 
+    public Elements element0 = Elements.FIRE;
+    public Elements element1 = Elements.NONE;
+
     private float timeSinceJump;
     private float timeToDash;
     private bool dashing;
     private bool autodashing;
 
     // Use this for initialization
-    void Start() {
+    void Awake() {
+        if (Me == null) {
+            Me = this;
+        } else {
+            throw new System.Exception("Can't have two players at once");
+        }
+
         timeSinceJump = 0f;
         timeToDash = 0f;
         dashing = false;
@@ -38,6 +47,13 @@ public class Player : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
+        // invincibility
+
+        if (IFrames > 0) {
+            IFrames = Mathf.Max(IFrames - Time.deltaTime, 0f);
+            // there should be some graphical indication of this
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
 
         /*
@@ -135,11 +151,8 @@ public class Player : MonoBehaviour {
             bottleClone.GetComponent<Rigidbody2D>().velocity = pvelocity * bottlespeed;
 
             bottleClone.transform.position = reticle.transform.position;
-
-            /*
-             * when potion choice is set up: don't do this anymore
-             */
-            PersistentInteraction.ApplyToBottle(bottleClone, Elements.FIRE, Elements.FIRE, gameObject);
+            
+            PersistentInteraction.ApplyToBottle(bottleClone, element0, element1, gameObject);
 
             reticle.SetActive(false);
         }
@@ -172,5 +185,18 @@ public class Player : MonoBehaviour {
         Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
         velocity = velocity + Vector2.up * jump;
         GetComponent<Rigidbody2D>().velocity = velocity;
+    }
+
+    public static Player Me {
+        get; private set;
+    }
+
+    public float IFrames {
+        get; set;
+    }
+
+    public void AutoIFrames() {
+        // this is completely arbitrary
+        IFrames = 1f;
     }
 }

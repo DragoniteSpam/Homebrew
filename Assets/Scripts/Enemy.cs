@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(HomebrewFlags))]
-public class Foe : Responsive {
+public class Enemy : Responsive {
     protected override void Awake() {
         GetComponent<HomebrewFlags>().Set(Elements.PLAYER);
     }
 
     protected override void Update() {
         base.Update();
+
+        Collider2D collider = GetComponentInChildren<Collider2D>();
+        Collider2D playerCollider = Player.Me.GetComponentInChildren<Collider2D>();
+
+        if (collider.bounds.Intersects(playerCollider.bounds) && Player.Me.IFrames == 0f) {
+            Player.Me.AutoIFrames();
+        }
     }
 
     // collision with player. not collision with potions. those are checked in update.
@@ -21,6 +28,10 @@ public class Foe : Responsive {
     }
 
     public override void Kill(GameObject who) {
-        Destroy(gameObject);
+        base.Kill(who);
+    }
+
+    public override void Interact(int potionFlags) {
+        base.Interact(potionFlags);
     }
 }

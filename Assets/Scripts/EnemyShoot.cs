@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShoot : /*Patrol*/ Foe {
+public class EnemyShoot : /*Patrol*/ Enemy {
 
     [Header("Stats")]
     public float speed;
@@ -55,5 +55,13 @@ public class EnemyShoot : /*Patrol*/ Foe {
         } else {
             timeBetweenShots -= Time.deltaTime;
         }
+    }
+
+    public override void Kill(GameObject who) {
+        base.Kill(who);
+    }
+
+    public override void Interact(int potionFlags) {
+        base.Interact(potionFlags);
     }
 }

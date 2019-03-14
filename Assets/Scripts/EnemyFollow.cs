@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyFollow : Patrol {
+public class EnemyFollow : EnemyPatrol {
 
     public float speed;
     private Transform target;
@@ -32,5 +32,13 @@ public class EnemyFollow : Patrol {
     protected override void Turn() {
         base.Turn();
         right = !right;
+    }
+
+    public override void Kill(GameObject who) {
+        base.Kill(who);
+    }
+
+    public override void Interact(int potionFlags) {
+        base.Interact(potionFlags);
     }
 }

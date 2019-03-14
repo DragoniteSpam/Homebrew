@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public enum Elements {
-    PLAYER, FIRE, THUNDER, WATER, WIND, EARTH
+    NONE, PLAYER, FIRE, THUNDER, WATER, WIND, EARTH
 }
 
 public class PersistentInteraction : MonoBehaviour {
@@ -12,6 +12,15 @@ public class PersistentInteraction : MonoBehaviour {
         Me = this;
 
         potionDataLookup = new Dictionary<int, PotionMeta> {
+            // probably lerp these colors with white or something
+            { Combination(Elements.NONE, Elements.NONE), new PotionMeta("Empty Bottle", new Color(0xe0 / 255f, 0xe0 / 255f, 0xe0 / 255f), true) },
+
+            { Combination(Elements.FIRE, Elements.NONE), new PotionMeta("Basic Fire", new Color(0xff / 255f, 0x8c / 255f, 0), true) },
+            { Combination(Elements.WATER, Elements.NONE), new PotionMeta("Basic Water", new Color(0, 0x66 / 255f, 0xcc / 255f), true) },
+            { Combination(Elements.WIND, Elements.NONE), new PotionMeta("Basic Wind", new Color(0x33 / 255f, 0x99 / 255f, 0x66 * 255f), true) },
+            { Combination(Elements.THUNDER, Elements.NONE), new PotionMeta("Basic Thunder", new Color(0xcc / 255f, 0xcc / 255f, 0x33 / 255f), true) },
+            { Combination(Elements.EARTH, Elements.NONE), new PotionMeta("Basic Earth", new Color(0xcc / 255f, 0x66 / 255f, 0), true) },
+
             { Combination(Elements.FIRE, Elements.FIRE), new PotionMeta("Pure Fire", new Color(0xff / 255f, 0x8c / 255f, 0), true) },
             { Combination(Elements.FIRE, Elements.THUNDER), new PotionMeta("Plasma", new Color(0f, 0f, 0f), true) },
             { Combination(Elements.FIRE, Elements.WATER), new PotionMeta("Steam", new Color(0x66 / 255f, 0xb2 / 255f, 1), true) },
@@ -34,7 +43,7 @@ public class PersistentInteraction : MonoBehaviour {
         };
     }
 
-    private static int Combination(Elements e1, Elements e2) {
+    public static int Combination(Elements e1, Elements e2) {
         return 1 << ((int)e1) | 1 << ((int)e2);
     }
 
