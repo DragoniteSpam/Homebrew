@@ -77,8 +77,6 @@ public class Player : MonoBehaviour {
 
         activeElement = 0;
 
-        bottle = (GameObject)Resources.Load("Prefabs/bottle");
-
         reticle.SetActive(false);
 
         GetComponent<HomebrewFlags>().Set(Elements.PLAYER);
