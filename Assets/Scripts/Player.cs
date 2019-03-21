@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     private const float MOVE_THRESHOLD = 0.1f;
     private const float DASH_MULTIPLIER = 2f;
     private const float SELECTOR_TIME_SCALE = 0.5f;
+    private const float IFRAME_HZ = 10;
 
     public float maxSpeed = 4f;
     public float friction = 0.2f;
@@ -89,9 +90,20 @@ public class Player : MonoBehaviour {
     void Update() {
         // invincibility
 
-        if (IFrames > 0) {
+        if (IFrames > 0f) {
             IFrames = Mathf.Max(IFrames - Time.deltaTime, 0f);
-            // there should be some graphical indication of this
+
+            Renderer body = transform.Find("Body").GetComponent<Renderer>();
+
+            if (IFrames > 0f) {
+                IFrameTime = Mathf.Max(IFrameTime - Time.deltaTime);
+                if (IFrameTime <= 0f) {
+                    body.enabled = (IFrames > 0f ? !body.enabled : true);
+                    IFrameTime = 1 / IFRAME_HZ;
+                }
+            } else {
+                body.enabled = true;
+            }
         }
 
         float horizontal = Input.GetAxis("Horizontal");
@@ -282,10 +294,21 @@ public class Player : MonoBehaviour {
     public float IFrames {
         get; set;
     }
+    
+    private float IFrameTime {
+        get; set;
+    }
+
+    public bool Invincible {
+        get {
+            return IFrames > 0f;
+        }
+    }
 
     public void AutoIFrames() {
         // this is completely arbitrary
         IFrames = 1f;
+        IFrameTime = 1 / IFRAME_HZ;
     }
 
     private int Quadrant(Vector2 position) {

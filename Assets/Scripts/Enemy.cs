@@ -12,7 +12,7 @@ public class Enemy : Responsive {
         Collider2D collider = GetComponentInChildren<Collider2D>();
         Collider2D playerCollider = Player.Me.GetComponentInChildren<Collider2D>();
 
-        if (collider.bounds.Intersects(playerCollider.bounds) && Player.Me.IFrames == 0f) {
+        if (playerCollider != null && collider.bounds.Intersects(playerCollider.bounds) && !Player.Me.Invincible) {
             Player.Me.AutoIFrames();
         }
     }
