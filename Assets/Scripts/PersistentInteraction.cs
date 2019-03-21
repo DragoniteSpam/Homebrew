@@ -53,6 +53,14 @@ public class PersistentInteraction : MonoBehaviour {
         };
     }
 
+    public PotionMeta Data(int combination) {
+        return potionDataLookup[combination];
+    }
+
+    public PotionMeta Data(Elements element0, Elements element1) {
+        return potionDataLookup[Combination(element0, element1)];
+    }
+
     public static int Combination(Elements e1, Elements e2) {
         return 1 << ((int)e1) | 1 << ((int)e2);
     }

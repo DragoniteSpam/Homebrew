@@ -21,13 +21,19 @@ public class Player : MonoBehaviour {
 
     public GameObject selectorOverlay;
 
-    public Elements element0 = Elements.FIRE;
-    public Elements element1 = Elements.NONE;
+    public Elements[] elements = new Elements[2] {
+        Elements.FIRE, Elements.NONE
+    };
+
+    public Text[] elementText;
+    public Text combinedText;
 
     private float timeSinceJump;
     private float timeToDash;
     private bool dashing;
     private bool autodashing;
+
+    private int activeElement;
 
     private bool[] ownedElements;
     private int[] elementMap;
@@ -69,15 +75,20 @@ public class Player : MonoBehaviour {
         dashing = false;
         autodashing = false;
 
+        activeElement = 0;
+
         bottle = (GameObject)Resources.Load("Prefabs/bottle");
 
         reticle.SetActive(false);
 
         GetComponent<HomebrewFlags>().Set(Elements.PLAYER);
+
+        SetElementText();
     }
 
-    // Update is called once per frame
-    void FixedUpdate() {
+    // This used to be FixedUpdate but it was causing inputs to be skipped whenever the FixedUpdate was
+    // fired at a different time than regular Update because screw you too Unity
+    void Update() {
         // invincibility
 
         if (IFrames > 0) {
@@ -161,107 +172,101 @@ public class Player : MonoBehaviour {
         }
 
         /*
-         * Throw
+         * Throw, but only if the overlay(s) aren't shown
          */
+        
+        if (!selectorOverlay.activeInHierarchy) {
+            Vector3 mousePos2D = Input.mousePosition;
+            mousePos2D.z = -Camera.main.transform.position.z;
+            Vector3 mousePos3d = Camera.main.ScreenToWorldPoint(mousePos2D);
+            Vector3 mouseDelta = mousePos3d - transform.position;
 
-        Vector3 mousePos2D = Input.mousePosition;
-        mousePos2D.z = -Camera.main.transform.position.z;
-        Vector3 mousePos3d = Camera.main.ScreenToWorldPoint(mousePos2D);
-        Vector3 mouseDelta = mousePos3d - transform.position;
+            if (Input.GetButtonUp("Potion Chuck")) {
+                aimingMode = false;
 
-        if (Input.GetButtonUp("Potion Chuck")) {
-            aimingMode = false;
+                Vector3 pvelocity = mouseDelta;
+                pvelocity.Normalize();
 
-            Vector3 pvelocity = mouseDelta;
-            pvelocity.Normalize();
+                GameObject bottleClone = Instantiate(bottle);
 
-            GameObject bottleClone = Instantiate(bottle);
+                bottleClone.transform.position = transform.position;
+                bottleClone.GetComponent<Rigidbody2D>().isKinematic = false;
+                bottleClone.GetComponent<Rigidbody2D>().velocity = pvelocity * bottlespeed;
 
-            bottleClone.transform.position = transform.position;
-            bottleClone.GetComponent<Rigidbody2D>().isKinematic = false;
-            bottleClone.GetComponent<Rigidbody2D>().velocity = pvelocity * bottlespeed;
+                bottleClone.transform.position = reticle.transform.position;
 
-            bottleClone.transform.position = reticle.transform.position;
+                PersistentInteraction.ApplyToBottle(bottleClone, elements[0], elements[1], gameObject);
 
-            PersistentInteraction.ApplyToBottle(bottleClone, element0, element1, gameObject);
-
-            reticle.SetActive(false);
-        }
-
-        if (Input.GetButtonDown("Potion Chuck")) {
-            //the player has pressed the mouse button down while over the slingshot 
-            aimingMode = true;
-
-            reticle.SetActive(true);
-        }
-
-        if (aimingMode) {
-            //limit mouse delta to the radius of the slingshot spherecollider
-            float maxmagnitude = launchRadius;
-
-            Vector3 absMouseDelta = mouseDelta;
-            absMouseDelta.Normalize();
-            absMouseDelta = absMouseDelta * maxmagnitude;
-
-            if (mouseDelta.magnitude > maxmagnitude) {
-                mouseDelta.Normalize();
-                mouseDelta *= maxmagnitude;
+                reticle.SetActive(false);
             }
 
-            reticle.transform.position = transform.position + absMouseDelta;
+            if (Input.GetButtonDown("Potion Chuck")) {
+                //the player has pressed the mouse button down while over the slingshot 
+                aimingMode = true;
+
+                reticle.SetActive(true);
+            }
+
+            if (aimingMode) {
+                //limit mouse delta to the radius of the slingshot spherecollider
+                float maxmagnitude = launchRadius;
+
+                Vector3 absMouseDelta = mouseDelta;
+                absMouseDelta.Normalize();
+                absMouseDelta = absMouseDelta * maxmagnitude;
+
+                if (mouseDelta.magnitude > maxmagnitude) {
+                    mouseDelta.Normalize();
+                    mouseDelta *= maxmagnitude;
+                }
+
+                reticle.transform.position = transform.position + absMouseDelta;
+            }
+        }
+        
+
+        /*
+         * Cycle selected element
+         */
+
+        if (Input.GetButtonDown("Cycle")) {
+            activeElement = (++activeElement) % elements.Length;
+            SetElementText();
         }
 
         /*
-         * Potions menu
+         * Potions menu: bottom left: (0, 0); top right: (W, H)
          */
 
-        if (Input.GetButtonDown("Potion Menu")) {
-            bool currentlyShown = !selectorOverlay.activeInHierarchy;
-            selectorOverlay.SetActive(currentlyShown);
-            Time.timeScale = currentlyShown ? SELECTOR_TIME_SCALE : 1f;
-
-            for (int i = 0; i < 4; i++) {
-                Text text = quadrantText[i];
-                if (ownedElements[elementMap[i]]) {
-                    text.text = PersistentInteraction.Me.elementNames[elementMap[i]];
-                } else {
-                    text.text = "None";
-                }
-            }
-        }
+        Vector2 position = new Vector2((Input.mousePosition.x / Screen.width) - 0.5f, (Input.mousePosition.y / Screen.height) - 0.5f);
 
         if (selectorOverlay.activeInHierarchy) {
-            /*
-             * Bottom left: (0, 0); top right: (W, H)
-             */
-            
-            Vector2 position = new Vector2((Input.mousePosition.x / Screen.width) - 0.5f, (Input.mousePosition.y / Screen.height) - 0.5f);
-
             foreach (GameObject what in quadrants) {
                 what.SetActive(false);
             }
 
             if (position.magnitude > 0.1f) {
-                int quadrant;
-                if (position.x > 0f) {
-                    // upper right
-                    if (position.y > 0f) {
-                        quadrant = 0;
-                    // lower right
-                    } else {
-                        quadrant = 1;
-                    }
-                } else {
-                    // upper left
-                    if (position.y > 0f) {
-                        quadrant = 3;
-                    // lower left
-                    } else {
-                        quadrant = 2;
-                    }
+                quadrants[Quadrant(position)].SetActive(true);
+            }
+
+            if (Input.GetButtonDown("Select")) {
+                selectorOverlay.SetActive(false);
+                Time.timeScale = 1f;
+
+                if (position.magnitude > 0.1f) {
+                    elements[activeElement] = (Elements)elementMap[Quadrant(position)];
+                    SetElementText();
+                }
+            }
+        } else {
+            if (Input.GetButtonDown("Potion Menu")) {
+                for (int i = 0; i < 4; i++) {
+                    Text text = quadrantText[i];
+                    text.text = ownedElements[elementMap[i]] ? PersistentInteraction.Me.elementNames[elementMap[i]] : "None";
                 }
 
-                quadrants[quadrant].SetActive(true);
+                selectorOverlay.SetActive(true);
+                Time.timeScale = SELECTOR_TIME_SCALE;
             }
         }
     }
@@ -283,5 +288,35 @@ public class Player : MonoBehaviour {
     public void AutoIFrames() {
         // this is completely arbitrary
         IFrames = 1f;
+    }
+
+    private int Quadrant(Vector2 position) {
+        if (position.x > 0f) {
+            // upper right
+            if (position.y > 0f) {
+                return 0;
+            // lower right
+            } else {
+                return 1;
+            }
+        } else {
+            // upper left
+            if (position.y > 0f) {
+                return 3;
+            // lower left
+            } else {
+                return 2;
+            }
+        }
+    }
+
+    private void SetElementText() {
+        for (int i=0; i<elementText.Length; i++) {
+            elementText[i].text = "Element " + (i+1) + ": " + PersistentInteraction.Me.elementNames[(int)elements[i]];
+            // this is an arbitrary color to indicate the active element, DO SOMETHING LESS AMBIGUOUS LATER
+            elementText[i].color = (activeElement == i) ? Color.cyan : Color.white;
+        }
+
+        combinedText.text = "}   " + PersistentInteraction.Me.Data(elements[0], elements[1]).Name;
     }
 }
