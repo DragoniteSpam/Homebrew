@@ -2,14 +2,24 @@
 using UnityEngine;
 
 public enum Elements {
-    NONE, PLAYER, FIRE, THUNDER, WATER, WIND, EARTH
+    NONE, PLAYER, FIRE, THUNDER, WATER, WIND, EARTH, SIZE
 }
 
 public class PersistentInteraction : MonoBehaviour {
+    public string[] elementNames;
+
     private Dictionary<int, PotionMeta> potionDataLookup;
 
     void Awake() {
+        if (Me != null) {
+            throw new System.Exception("Please don't instantiate more than one PersistentInteraction, thanks");
+        }
+
         Me = this;
+
+        elementNames = new string[(int)Elements.SIZE] {
+            "None", "Player", "Fire", "Thunder", "Water", "Wind", "Earth"
+        };
 
         potionDataLookup = new Dictionary<int, PotionMeta> {
             // probably lerp these colors with white or something

@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(HomebrewFlags))]
 public class Player : MonoBehaviour {
     private const float DASH_THRESHOLD = 0.5f;
     private const float MOVE_THRESHOLD = 0.1f;
     private const float DASH_MULTIPLIER = 2f;
+    private const float SELECTOR_TIME_SCALE = 0.5f;
 
     public float maxSpeed = 4f;
     public float friction = 0.2f;
@@ -17,6 +19,8 @@ public class Player : MonoBehaviour {
     public float launchRadius;
     public GameObject reticle;
 
+    public GameObject selectorOverlay;
+
     public Elements element0 = Elements.FIRE;
     public Elements element1 = Elements.NONE;
 
@@ -25,6 +29,11 @@ public class Player : MonoBehaviour {
     private bool dashing;
     private bool autodashing;
 
+    private bool[] ownedElements;
+    private int[] elementMap;
+    private GameObject[] quadrants;
+    private Text[] quadrantText;
+
     // Use this for initialization
     void Awake() {
         if (Me == null) {
@@ -32,6 +41,28 @@ public class Player : MonoBehaviour {
         } else {
             throw new System.Exception("Can't have two players at once");
         }
+
+        elementMap = new int[4] {
+            (int)Elements.NONE, (int)Elements.FIRE, (int)Elements.WATER, (int)Elements.EARTH
+        };
+
+        ownedElements = new bool[(int)Elements.SIZE] {
+            true, false, true, false, true, false, true
+        };
+
+        quadrants = new GameObject[4] {
+            selectorOverlay.transform.Find("Ring 0").gameObject,
+            selectorOverlay.transform.Find("Ring 1").gameObject,
+            selectorOverlay.transform.Find("Ring 2").gameObject,
+            selectorOverlay.transform.Find("Ring 3").gameObject
+        };
+
+        quadrantText = new Text[4] {
+            selectorOverlay.transform.Find("Text 0").GetComponent<Text>(),
+            selectorOverlay.transform.Find("Text 1").GetComponent<Text>(),
+            selectorOverlay.transform.Find("Text 2").GetComponent<Text>(),
+            selectorOverlay.transform.Find("Text 3").GetComponent<Text>()
+        };
 
         timeSinceJump = 0f;
         timeToDash = 0f;
@@ -59,7 +90,7 @@ public class Player : MonoBehaviour {
         /*
          * Running
          */
-        
+
         if (Mathf.Abs(horizontal) > MOVE_THRESHOLD) {
             if (Input.GetButtonDown("Run")) {
                 if (timeToDash > 0f) {
@@ -99,7 +130,7 @@ public class Player : MonoBehaviour {
         }
 
         Rigidbody2D plugandplay = GetComponent<Rigidbody2D>();
-        
+
         plugandplay.AddForce(new Vector2(horizontal * f, 0f), ForceMode2D.Impulse);
 
         Vector2 velocity = plugandplay.velocity;
@@ -111,7 +142,7 @@ public class Player : MonoBehaviour {
             if (Input.GetButtonDown("Jump")) {
                 timeSinceJump = 0f;
             }
-            
+
             velocity.x = Mathf.Lerp(velocity.x, 0f, friction);
         }
 
@@ -151,7 +182,7 @@ public class Player : MonoBehaviour {
             bottleClone.GetComponent<Rigidbody2D>().velocity = pvelocity * bottlespeed;
 
             bottleClone.transform.position = reticle.transform.position;
-            
+
             PersistentInteraction.ApplyToBottle(bottleClone, element0, element1, gameObject);
 
             reticle.SetActive(false);
@@ -178,6 +209,60 @@ public class Player : MonoBehaviour {
             }
 
             reticle.transform.position = transform.position + absMouseDelta;
+        }
+
+        /*
+         * Potions menu
+         */
+
+        if (Input.GetButtonDown("Potion Menu")) {
+            bool currentlyShown = !selectorOverlay.activeInHierarchy;
+            selectorOverlay.SetActive(currentlyShown);
+            Time.timeScale = currentlyShown ? SELECTOR_TIME_SCALE : 1f;
+
+            for (int i = 0; i < 4; i++) {
+                Text text = quadrantText[i];
+                if (ownedElements[elementMap[i]]) {
+                    text.text = PersistentInteraction.Me.elementNames[elementMap[i]];
+                } else {
+                    text.text = "None";
+                }
+            }
+        }
+
+        if (selectorOverlay.activeInHierarchy) {
+            /*
+             * Bottom left: (0, 0); top right: (W, H)
+             */
+            
+            Vector2 position = new Vector2((Input.mousePosition.x / Screen.width) - 0.5f, (Input.mousePosition.y / Screen.height) - 0.5f);
+
+            foreach (GameObject what in quadrants) {
+                what.SetActive(false);
+            }
+
+            if (position.magnitude > 0.1f) {
+                int quadrant;
+                if (position.x > 0f) {
+                    // upper right
+                    if (position.y > 0f) {
+                        quadrant = 0;
+                    // lower right
+                    } else {
+                        quadrant = 1;
+                    }
+                } else {
+                    // upper left
+                    if (position.y > 0f) {
+                        quadrant = 3;
+                    // lower left
+                    } else {
+                        quadrant = 2;
+                    }
+                }
+
+                quadrants[quadrant].SetActive(true);
+            }
         }
     }
 
