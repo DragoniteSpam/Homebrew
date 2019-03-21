@@ -1117,7 +1117,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1140,7 +1140,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.261112, y: -3.8958337, z: -10}
+  m_LocalPosition: {x: 5.956667, y: -3.9375002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1302,11 +1302,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 625412776}
-  - component: {fileID: 625412777}
   - component: {fileID: 625412778}
   - component: {fileID: 625412781}
-  - component: {fileID: 625412779}
-  - component: {fileID: 625412782}
   - component: {fileID: 625412780}
   m_Layer: 9
   m_Name: Enemy
@@ -1328,22 +1325,8 @@ Transform:
   - {fileID: 1338153799}
   - {fileID: 2060402768}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &625412777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 625412775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 951e8a774d6c2dd48bf543e68fa309b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  weaknesses: 
-  maxSpeed: 4
 --- !u!50 &625412778
 Rigidbody2D:
   serializedVersion: 4
@@ -1364,21 +1347,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &625412779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 625412775}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 075cca37df4e4fd46ba5c33865a49fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  weaknesses: 
-  maxSpeed: 4
-  speed: 2
 --- !u!114 &625412780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,7 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3befa6908876e478b84d1877e9b688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 12
   weaknesses: 0200000004000000
   speed: 0
   stoppingDistance: 3
@@ -1409,19 +1377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60a9519a793bd542818e73a2a99c2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &625412782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 625412775}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a814de7ed2979345a5cec06f05c2d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  weaknesses: 
 --- !u!1 &738450636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,7 +1541,7 @@ MonoBehaviour:
   m_Follow: {fileID: 2055789934}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 10
+    OrthographicSize: 6
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -1598,7 +1553,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 758514055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.261112, y: -3.8958337, z: -10}
+  m_LocalPosition: {x: 5.956667, y: -3.9375002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 29946551}
@@ -1867,7 +1822,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1039093608
 MonoBehaviour:
@@ -1880,6 +1835,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fdc65526bfb1342bb00e653d00b2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthSmall: {fileID: 1836097024762106, guid: 76673634d2f231640979e464e253a97f,
+    type: 2}
 --- !u!1 &1152413870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3938,7 +3895,7 @@ Transform:
   - {fileID: 1517261721}
   - {fileID: 1941630832}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2055789935
 MonoBehaviour:

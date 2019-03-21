@@ -19,6 +19,7 @@ public class EnemyShoot : /*Patrol*/ Enemy {
 
     // Use this for initialization
     protected override void Awake() {
+        base.Awake();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
