@@ -9,6 +9,9 @@ public class HomebrewGame : MonoBehaviour {
     [Header("Prefabs for this or that")]
     public GameObject prefabMud;
 
+    [Header("sprites")]
+    public List<Sprite> spritesMud = new List<Sprite>();
+
     public static HomebrewGame Me;
     void Awake() {
         if (Me == null) {

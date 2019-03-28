@@ -20,12 +20,8 @@ public class PhysicalBottle : MonoBehaviour {
     void OnDestroy() {
         allBottles.Remove(this);
 
-        float r = 0.5f;
-        if (PersistentInteraction.Recognized(Flags, PersistentInteraction.Combination(Elements.WATER, Elements.EARTH))) {
-            for (int i = 0; i < 20; i++) {
-                Instantiate(HomebrewGame.Me.prefabMud, new Vector3(transform.position.x + Random.Range(-r, r),
-                    transform.position.y + Random.Range(-r, r), transform.position.z), Quaternion.identity);
-            }
+        if (Flags==PersistentInteraction.Combination(Elements.WATER, Elements.EARTH)) {
+            HazardMud.SpawnBlob(gameObject);
         }
     }
 
