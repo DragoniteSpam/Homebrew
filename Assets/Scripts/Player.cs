@@ -49,6 +49,8 @@ public class Player : MonoBehaviour {
             throw new System.Exception("Can't have two players at once");
         }
 
+        HomebrewGame.AddMob(gameObject);
+
         elementMap = new int[4] {
             (int)Elements.NONE, (int)Elements.FIRE, (int)Elements.WATER, (int)Elements.EARTH
         };

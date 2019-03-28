@@ -8,6 +8,8 @@ public class Enemy : Responsive {
     protected override void Awake() {
         GetComponent<HomebrewFlags>().Set(Elements.PLAYER);
 
+        HomebrewGame.AddMob(gameObject);
+
         healthPieces = new List<GameObject>();
         SetHealth();
     }
@@ -35,6 +37,7 @@ public class Enemy : Responsive {
 
     public override void Kill(GameObject who) {
         base.Kill(who);
+        HomebrewGame.RemoveMob(gameObject);
     }
 
     public override void Interact(int potionFlags) {

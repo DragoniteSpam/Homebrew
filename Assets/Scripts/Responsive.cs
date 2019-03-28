@@ -35,6 +35,10 @@ public class Responsive : MonoBehaviour {
                 }
             }
         }
+
+        if (PersistentInteraction.Recognized(potionFlags, PersistentInteraction.Combination(Elements.WATER, Elements.EARTH))) {
+
+        }
     }
 
     protected void UniversalInteraction(int potionFlags) {
