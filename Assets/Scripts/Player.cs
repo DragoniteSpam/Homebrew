@@ -143,7 +143,7 @@ public class Player : MonoBehaviour {
         }
 
         Vector3 scale = transform.localScale;
-        scale.x = (horizontal > 0 ? 1 : (horizontal < 0) ? -1 : scale.x);
+       // scale.x = (horizontal > 0 ? 1 : (horizontal < 0) ? -1 : scale.x);
         transform.localScale = scale;
 
         float f = 1;

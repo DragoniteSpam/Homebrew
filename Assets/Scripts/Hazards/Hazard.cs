@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 
 public class Hazard : MonoBehaviour {
+    public const float DEFAULT_LIFETIME = 10f;
+
+    public float lifetime;
+
     void Awake() {
-        
+        lifetime = DEFAULT_LIFETIME;
     }
 
     void Update() {
@@ -14,6 +18,11 @@ public class Hazard : MonoBehaviour {
             if (mobCollider != null && collider.bounds.Intersects(mobCollider.bounds)) {
                 Interact(mob);
             }
+        }
+
+        lifetime = lifetime - Time.deltaTime;
+        if (lifetime <= 0) {
+            Destroy(gameObject);
         }
     }
     
@@ -27,6 +36,6 @@ public class Hazard : MonoBehaviour {
     }
     
     public virtual void Interact(GameObject what) {
-        Debug.Log(what.name);
+        // slow, burn, etc
     }
 }

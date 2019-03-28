@@ -6,6 +6,9 @@ public class HomebrewGame : MonoBehaviour {
 
     public GameObject healthSmall;
 
+    [Header("Prefabs for this or that")]
+    public GameObject prefabMud;
+
     public static HomebrewGame Me;
     void Awake() {
         if (Me == null) {
