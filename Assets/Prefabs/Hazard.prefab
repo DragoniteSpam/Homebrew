@@ -21,10 +21,9 @@ GameObject:
   - component: {fileID: 4871774589719036}
   - component: {fileID: 58460866974330542}
   - component: {fileID: 50010006931780322}
-  - component: {fileID: 114629953891004680}
   - component: {fileID: 212983751500287004}
   m_Layer: 13
-  m_Name: Mud
+  m_Name: Hazard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,18 +77,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.015
---- !u!114 &114629953891004680
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1586479316095546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e8eca3f59b017a4e8a04bbf8a3f0880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifetime: 0
 --- !u!212 &212983751500287004
 SpriteRenderer:
   m_ObjectHideFlags: 1

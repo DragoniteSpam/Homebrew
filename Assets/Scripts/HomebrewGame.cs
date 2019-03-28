@@ -7,10 +7,11 @@ public class HomebrewGame : MonoBehaviour {
     public GameObject healthSmall;
 
     [Header("Prefabs for this or that")]
-    public GameObject prefabMud;
+    public GameObject prefabHazard;
 
     [Header("sprites")]
     public List<Sprite> spritesMud = new List<Sprite>();
+    public List<Sprite> spritesMagma = new List<Sprite>();
 
     public static HomebrewGame Me;
     void Awake() {

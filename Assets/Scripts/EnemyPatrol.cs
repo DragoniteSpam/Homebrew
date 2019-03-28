@@ -11,7 +11,7 @@ public class EnemyPatrol : Enemy {
     protected override void Update() {
         base.Update();
 
-        float currentSpeed = maxSpeed * (transform.localScale.x > 0 ? 1f : -1f);
+        float currentSpeed = speedFactor * maxSpeed * (transform.localScale.x > 0 ? 1f : -1f);
         transform.Translate(Vector2.right * currentSpeed * Time.deltaTime);
 
         Vector2 position2D = new Vector2(transform.position.x, transform.position.y);

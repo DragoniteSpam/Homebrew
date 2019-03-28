@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(HomebrewFlags))]
-public class Player : MonoBehaviour {
+public class Player : Responsive {
     private const float DASH_THRESHOLD = 0.5f;
     private const float MOVE_THRESHOLD = 0.1f;
     private const float DASH_MULTIPLIER = 2f;
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour {
 
     public Text[] elementText;
     public Text combinedText;
-
+    
     private float timeSinceJump;
     private float timeToDash;
     private bool dashing;
@@ -42,7 +43,9 @@ public class Player : MonoBehaviour {
     private Text[] quadrantText;
 
     // Use this for initialization
-    void Awake() {
+    protected override void Awake() {
+        base.Awake();
+
         if (Me == null) {
             Me = this;
         } else {
@@ -50,6 +53,9 @@ public class Player : MonoBehaviour {
         }
 
         HomebrewGame.AddMob(gameObject);
+
+        healthPieces = new List<GameObject>();
+        SetHealth();
 
         elementMap = new int[4] {
             (int)Elements.NONE, (int)Elements.FIRE, (int)Elements.WATER, (int)Elements.EARTH
@@ -89,7 +95,9 @@ public class Player : MonoBehaviour {
 
     // This used to be FixedUpdate but it was causing inputs to be skipped whenever the FixedUpdate was
     // fired at a different time than regular Update because screw you too Unity
-    void Update() {
+    protected override void Update() {
+        base.Update();
+
         // invincibility
 
         if (IFrames > 0f) {
@@ -146,7 +154,7 @@ public class Player : MonoBehaviour {
        // scale.x = (horizontal > 0 ? 1 : (horizontal < 0) ? -1 : scale.x);
         transform.localScale = scale;
 
-        float f = 1;
+        float f = speedFactor;
 
         if (dashing || autodashing) {
             f = DASH_MULTIPLIER;
@@ -341,5 +349,18 @@ public class Player : MonoBehaviour {
         }
 
         combinedText.text = "}   " + PersistentInteraction.Me.Data(elements[0], elements[1]).Name;
+    }
+
+    public void Damage(int amount) {
+        health = health - amount;
+        if (health > 0) {
+            OnDamage();
+        } else {
+            // die
+        }
+    }
+
+    public override void OnDamage() {
+        SetHealth();
     }
 }

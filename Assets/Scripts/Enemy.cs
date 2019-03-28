@@ -2,15 +2,13 @@
 using UnityEngine;
 
 [RequireComponent(typeof(HomebrewFlags))]
-public class Enemy : Responsive {
-    private List<GameObject> healthPieces;
-    
+public class Enemy : Responsive {    
     protected override void Awake() {
+        base.Awake();
+
         GetComponent<HomebrewFlags>().Set(Elements.PLAYER);
 
         HomebrewGame.AddMob(gameObject);
-
-        healthPieces = new List<GameObject>();
         SetHealth();
     }
 
@@ -21,7 +19,7 @@ public class Enemy : Responsive {
         Collider2D playerCollider = Player.Me.GetComponentInChildren<Collider2D>();
 
         if (playerCollider != null && collider.bounds.Intersects(playerCollider.bounds) && !Player.Me.Invincible) {
-            Player.Me.AutoIFrames();
+            Player.Me.Damage(1);
         }
     }
 
@@ -45,21 +43,7 @@ public class Enemy : Responsive {
         SetHealth();
     }
 
-    protected void SetHealth() {
-        int total = (int)Mathf.Ceil(health / 4f);
-        
-        foreach (GameObject sprite in healthPieces) {
-            Destroy(sprite);
-        }
-
-        healthPieces.Clear();
-        
-        for (int i = 0; i < total; i++) {
-            GameObject piece = Instantiate(HomebrewGame.Me.healthSmall);
-            piece.transform.parent = transform;
-            piece.transform.position = new Vector3(i - (total - 1)/2f , 0.75f, -1f) + transform.position;
-            piece.GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(Mathf.Min(0.75f, (health - 1 - i * 4) / 4f), 0f));
-            healthPieces.Add(piece);
-        }
+    public override void OnDamage() {
+        SetHealth();
     }
 }
