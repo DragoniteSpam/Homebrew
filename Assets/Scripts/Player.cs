@@ -22,6 +22,7 @@ public class Player : Responsive {
     public GameObject reticle;
 
     public GameObject selectorOverlay;
+    public GameObject deadOverlay;
 
     public Elements[] elements = new Elements[2] {
         Elements.FIRE, Elements.NONE
@@ -103,7 +104,7 @@ public class Player : Responsive {
         if (IFrames > 0f) {
             IFrames = Mathf.Max(IFrames - Time.deltaTime, 0f);
 
-            Renderer body = transform.Find("Body").GetComponent<Renderer>();
+            Renderer body = GetComponent<Renderer>();
 
             if (IFrames > 0f) {
                 IFrameTime = Mathf.Max(IFrameTime - Time.deltaTime);
@@ -352,15 +353,23 @@ public class Player : Responsive {
     }
 
     public void Damage(int amount) {
-        health = health - amount;
-        if (health > 0) {
-            OnDamage();
-        } else {
-            // die
+        if (!Me.Invincible) {
+            AutoIFrames();
+            health = health - amount;
+            if (health > 0) {
+                OnDamage();
+            } else {
+                Kill(null);
+            }
         }
     }
 
     public override void OnDamage() {
         SetHealth();
+    }
+
+    public override void Kill(GameObject whoDidIt) {
+        //base.Kill(whoDidIt);
+        deadOverlay.SetActive(true);
     }
 }

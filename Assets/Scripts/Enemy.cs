@@ -18,18 +18,15 @@ public class Enemy : Responsive {
         Collider2D collider = GetComponentInChildren<Collider2D>();
         Collider2D playerCollider = Player.Me.GetComponentInChildren<Collider2D>();
 
-        if (playerCollider != null && collider.bounds.Intersects(playerCollider.bounds) && !Player.Me.Invincible) {
+        if (playerCollider != null && collider.bounds.Intersects(playerCollider.bounds)) {
             Player.Me.Damage(1);
         }
     }
-
-    // collision with player. not collision with potions. those are checked in update.
+    
+    // this was for something at some point
     protected virtual void OnCollisionEnter2D(Collision2D other) {
         HomebrewFlags flagData = other.gameObject.GetComponent<HomebrewFlags>();
         if (flagData != null) {
-            if (flagData.Get(Elements.PLAYER)) {
-                Physics2D.IgnoreCollision(GetComponentInChildren<Collider2D>(), other.gameObject.GetComponentInChildren<Collider2D>());
-            }
         }
     }
 
