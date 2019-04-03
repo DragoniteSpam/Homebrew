@@ -78,6 +78,7 @@ public class Responsive : MonoBehaviour {
 
         foreach (Elements element in weaknesses) {
             if (PersistentInteraction.Recognized(potionFlags, element)) {
+                Debug.Log("yo");
                 Damage(1 /* todo */);
             }
         }
