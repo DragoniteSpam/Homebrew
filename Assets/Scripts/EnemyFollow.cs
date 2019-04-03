@@ -34,9 +34,10 @@ public class EnemyFollow : EnemyPatrol {
         right = !right;
     }
 
-    public override void Kill(GameObject who) {
-        base.Kill(who);
-    }
+    // only un-comment if you need to override
+//    public override void Kill(GameObject who) {
+//        base.Kill(who);
+//    }
 
     public override void Interact(int potionFlags) {
         base.Interact(potionFlags);

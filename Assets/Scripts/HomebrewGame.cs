@@ -42,6 +42,7 @@ public class HomebrewGame : MonoBehaviour {
     }
 
     public static GameObject CreateFloatingText(Vector3 position, string message, Color color, float lifespan = 1f, float fadeTime = 0.6f) {
+        position.z = -5f;   /* preferably be visible in front of everything else */
         TextMesh floatingText = Instantiate(Me.prefabFloatingText, position, Quaternion.identity).GetComponent<TextMesh>();
         floatingText.text = message;
         floatingText.color = color;

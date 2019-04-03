@@ -363,11 +363,7 @@ public class Player : Responsive {
         if (!Me.Invincible) {
             AutoIFrames();
             health = health - amount;
-            if (health > 0) {
-                OnDamage(amount);
-            } else {
-                Kill(null);
-            }
+            OnDamage(amount);
         }
     }
 

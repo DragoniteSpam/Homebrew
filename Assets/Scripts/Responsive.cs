@@ -86,6 +86,9 @@ public class Responsive : MonoBehaviour {
 
     public virtual void OnDamage(int amount) {
         HomebrewGame.CreateFloatingText(transform.position, amount + "", Color.red);
+        if (health <= 0) {
+            Kill(null);
+        }
     }
 
     protected void UniversalInteraction(int potionFlags) {
