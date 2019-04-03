@@ -2,7 +2,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(HomebrewFlags))]
-public class Enemy : Responsive {    
+public class Enemy : Responsive {
+    new protected static bool showHealth = true;
+
     protected override void Awake() {
         base.Awake();
 
@@ -40,8 +42,8 @@ public class Enemy : Responsive {
         SetHealth();
     }
 
-    public override void Damage(int amount) {
-        base.Damage(amount);
-        SetHealth();
-    }
+    // only un-comment if you want to change this
+    //public override void Damage(int amount) {
+    //    base.Damage(amount);
+    //}
 }

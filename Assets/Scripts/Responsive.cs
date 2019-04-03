@@ -7,6 +7,8 @@ public class Responsive : MonoBehaviour {
     public const float STATUS_DURATION = 5f;
     public const float SLOW_SPEED = 0.5f;
     public const float SLOW_SPEED_PARTIAL = 0.75f;
+
+    protected static bool showHealth = false;
     
     public int maxHealth = 1;
     protected List<GameObject> healthPieces;
@@ -84,7 +86,9 @@ public class Responsive : MonoBehaviour {
     public virtual void Damage(int amount) {
         HomebrewGame.CreateFloatingText(transform.position, amount + "", Color.red);
         health = health - amount;
-        SetHealth();
+        if (showHealth) {
+            SetHealth();
+        }
         if (health <= 0) {
             Kill(null);
         }
@@ -109,8 +113,10 @@ public class Responsive : MonoBehaviour {
         for (int i = 0; i < total; i++) {
             GameObject piece = Instantiate(HomebrewGame.Me.healthSmall);
             piece.transform.parent = transform;
-            piece.transform.position = new Vector3(i - (total - 1) / 2f, 0.75f, -1f) + transform.position;
-            piece.GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(Mathf.Min(0.75f, Mathf.Ceil((health - 1 - i * 4) / 4f)), 0f));
+            piece.transform.position = new Vector3(0.5f * (i - (total - 1) / 2f), 0.75f, -1f) + transform.position;
+            // please let's not use the Space Shooter trick for this any longer
+            //piece.GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(Mathf.Min(0.75f, Mathf.Ceil((health - 1 - i * 4) / 4f)), 0f));
+            piece.GetComponent<SpriteRenderer>().sprite = HomebrewGame.Me.spritesHealth[(i == total - 1) ? health % 4 : 0];
             healthPieces.Add(piece);
         }
     }

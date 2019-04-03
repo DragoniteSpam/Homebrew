@@ -13,6 +13,7 @@ public class HomebrewGame : MonoBehaviour {
     [Header("sprites")]
     public List<Sprite> spritesMud = new List<Sprite>();
     public List<Sprite> spritesMagma = new List<Sprite>();
+    public Sprite[] spritesHealth; // there should be exactly four of these
 
     public static HomebrewGame Me;
     void Awake() {

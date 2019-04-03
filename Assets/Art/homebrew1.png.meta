@@ -176,6 +176,7 @@ TextureImporter:
     21300342: homebrew1_124
     21300344: homebrew1_125
     21300346: homebrew1_143
+    21300348: homebrew1_144
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -3331,6 +3332,106 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 73b08b79d6830164da5c5bb3bf9f3f3b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homebrew1_143
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 900
+        width: 53
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc0d3770707f29748b33e1b110ce386f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homebrew1_144
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 1495
+        width: 2
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80d2ca46d9d415c4da2c15588a017ee2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homebrew1_145
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 1493
+        width: 2
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a265012ec1c2224db2bbf5bcf8b1dab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homebrew1_146
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 1493
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a56db72a8e7d94f469ee7284865e8d45
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homebrew1_147
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 1493
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aeda9f5cf4d7264d97b0091c2e01c9f
       vertices: []
       indices: 
       edges: []

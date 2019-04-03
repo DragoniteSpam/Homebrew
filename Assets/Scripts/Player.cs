@@ -9,6 +9,8 @@ public class Player : Responsive {
     private const float DASH_MULTIPLIER = 2f;
     private const float SELECTOR_TIME_SCALE = 0.5f;
     private const float IFRAME_HZ = 10;
+    
+    new protected static bool showHealth = true;
 
     public float maxSpeed = 4f;
     public float friction = 0.2f;
