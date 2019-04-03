@@ -359,17 +359,11 @@ public class Player : Responsive {
         combinedText.text = "}   " + PersistentInteraction.Me.Data(elements[0], elements[1]).Name;
     }
 
-    public void Damage(int amount) {
+    public override void Damage(int amount) {
         if (!Me.Invincible) {
             AutoIFrames();
-            health = health - amount;
-            OnDamage(amount);
+            base.Damage(amount);
         }
-    }
-
-    public override void OnDamage(int amount) {
-        base.OnDamage(amount);
-        SetHealth();
     }
 
     public override void Kill(GameObject whoDidIt) {

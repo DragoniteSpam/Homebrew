@@ -36,14 +36,13 @@ public class Responsive : MonoBehaviour {
 
         // i really dont like this but i procrastinated and don't have time to come up with something
         // less awful
-        if (GetComponent<HomebrewFlags>().Get(Elements.PLAYER)) {
-            Collider2D collider = GetComponentInChildren<Collider2D>();
-            foreach (PhysicalBottle bottle in PhysicalBottle.allBottles) {
-                if (collider.bounds.Contains(bottle.transform.position) && bottle.owner != gameObject) {
-                    Interact(bottle.Flags);
-                    UniversalInteraction(bottle.Flags);
-                    Destroy(bottle.gameObject);
-                }
+        
+        Collider2D collider = GetComponentInChildren<Collider2D>();
+        foreach (PhysicalBottle bottle in PhysicalBottle.allBottles) {
+            if (collider.bounds.Contains(bottle.transform.position) && bottle.owner != gameObject) {
+                Interact(bottle.Flags);
+                UniversalInteraction(bottle.Flags);
+                Destroy(bottle.gameObject);
             }
         }
         
@@ -54,7 +53,7 @@ public class Responsive : MonoBehaviour {
                 timeBurnLastTick = timeBurn;
                 timeBurn = timeBurn - Time.deltaTime;
                 health = health - BURN_RATE;
-                OnDamage(BURN_RATE);
+                Damage(BURN_RATE);
                 speedFactor = SLOW_SPEED_PARTIAL;
             }
         } else {
@@ -77,15 +76,15 @@ public class Responsive : MonoBehaviour {
 
         foreach (Elements element in weaknesses) {
             if (PersistentInteraction.Recognized(potionFlags, element)) {
-                if (--health <= 0) {
-                    Kill(null);
-                }
+                Damage(1 /* todo */);
             }
         }
     }
 
-    public virtual void OnDamage(int amount) {
+    public virtual void Damage(int amount) {
         HomebrewGame.CreateFloatingText(transform.position, amount + "", Color.red);
+        health = health - amount;
+        SetHealth();
         if (health <= 0) {
             Kill(null);
         }
@@ -124,7 +123,7 @@ public class Responsive : MonoBehaviour {
             timeBurn = STATUS_DURATION;
             timeBurnLastTick = STATUS_DURATION;
 
-            Material material = GetComponent<Renderer>().material;
+            Material material = GetComponentInChildren<Renderer>().material;
             material.color = Color.Lerp(material.color, Color.red, 0.5f);
         }
     }
@@ -134,7 +133,7 @@ public class Responsive : MonoBehaviour {
     }
 
     public void Unburn() {
-        Material material = GetComponent<Renderer>().material;
+        Material material = GetComponentInChildren<Renderer>().material;
         material.color = Color.white;
     }
 

@@ -127,8 +127,8 @@ TextureImporter:
     21300244: homebrew1_140
     21300246: homebrew1_141
     21300248: homebrew1_142
-    21300250: homebrew1_143
-    21300252: homebrew1_144
+    21300250: homebrew1_167
+    21300252: homebrew1_170
     21300254: homebrew1_145
     21300256: homebrew1_146
     21300258: homebrew1_147
@@ -175,6 +175,7 @@ TextureImporter:
     21300340: homebrew1_110
     21300342: homebrew1_124
     21300344: homebrew1_125
+    21300346: homebrew1_143
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -3230,6 +3231,106 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 7462467f6f2724748af8dc884136637a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homebrew1_167
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 1024
+        width: 30
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a6f082f7d823e241b23e8cdfdfb283b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homebrew1_168
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 1022
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b013ce00041eb3943a0bdbb12bce2447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homebrew1_169
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 1021
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88aa2701f737b0c4ea0d4bb30c0ab08b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homebrew1_170
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 1019
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cdd9c400e492264a80eea737d39c32e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homebrew1_171
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 1021
+        width: 48
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b08b79d6830164da5c5bb3bf9f3f3b
       vertices: []
       indices: 
       edges: []
