@@ -9,9 +9,6 @@ public class Player : Responsive {
     private const float DASH_MULTIPLIER = 2f;
     private const float SELECTOR_TIME_SCALE = 0.5f;
     private const float IFRAME_HZ = 10;
-    
-    //new protected static bool showHealth = true;
-
     public float maxSpeed = 4f;
     public float friction = 0.2f;
     public float jump = 4f;
@@ -24,10 +21,6 @@ public class Player : Responsive {
     public GameObject reticle;
 
     public GameObject selectorOverlay;
-    public GameObject deadOverlay;
-    public GameObject hudOverlay;
-
-    public Sprite[] healthSprites;
 
     public Elements[] elements = new Elements[2] {
         Elements.FIRE, Elements.NONE
@@ -40,6 +33,7 @@ public class Player : Responsive {
     private float timeToDash;
     private bool dashing;
     private bool autodashing;
+    private SpriteRenderer sprite;
 
     private int activeElement;
 
@@ -51,10 +45,6 @@ public class Player : Responsive {
     // Use this for initialization
     protected override void Awake() {
         base.Awake();
-
-        if (((healthSprites.Length - 1) % maxHealth > 0) && (maxHealth % (healthSprites.Length - 1) > 0)) {
-            Debug.LogWarning("Player's maxHealth and the number of health sprites don't divide evenly into each other. Imprecision in the display of the health meter may occur.");
-        }
 
         if (Me == null) {
             Me = this;
@@ -109,11 +99,11 @@ public class Player : Responsive {
         base.Update();
 
         // invincibility
-
+        
         if (IFrames > 0f) {
             IFrames = Mathf.Max(IFrames - Time.deltaTime, 0f);
 
-            Renderer body = GetComponent<Renderer>();
+            Renderer body = transform.Find("Body").GetComponent<Renderer>();
 
             if (IFrames > 0f) {
                 IFrameTime = Mathf.Max(IFrameTime - Time.deltaTime);
@@ -161,7 +151,8 @@ public class Player : Responsive {
         }
 
         Vector3 scale = transform.localScale;
-       // scale.x = (horizontal > 0 ? 1 : (horizontal < 0) ? -1 : scale.x);
+ 
+
         transform.localScale = scale;
 
         float f = speedFactor;
@@ -204,14 +195,20 @@ public class Player : Responsive {
         /*
          * Throw, but only if the overlay(s) aren't shown
          */
-        
+
+       /* if (horizontal == -1)
+        {
+            sprite.flipX = true;
+        }
+        */
+
         if (!selectorOverlay.activeInHierarchy) {
             Vector3 mousePos2D = Input.mousePosition;
             mousePos2D.z = -Camera.main.transform.position.z;
             Vector3 mousePos3d = Camera.main.ScreenToWorldPoint(mousePos2D);
             Vector3 mouseDelta = mousePos3d - transform.position;
 
-            if (aimingMode && Input.GetButtonUp("Potion Chuck")) {
+            if (Input.GetButtonUp("Potion Chuck")) {
                 aimingMode = false;
 
                 Vector3 pvelocity = mouseDelta;
@@ -252,6 +249,8 @@ public class Player : Responsive {
 
                 reticle.transform.position = transform.position + absMouseDelta;
             }
+
+            GetComponent<Animator>().SetFloat("Speed", Mathf.Abs(horizontal));
         }
         
 
@@ -361,23 +360,16 @@ public class Player : Responsive {
         combinedText.text = "}   " + PersistentInteraction.Me.Data(elements[0], elements[1]).Name;
     }
 
-    public override void Damage(int amount) {
-        if (!Me.Invincible) {
-            AutoIFrames();
-            base.Damage(amount);
-            // because base.Damage calls the overridden version of SetHealth which we do not want here and i don't feel
-            // like addressing that the correct way right now
-            SetHealth();
+    public void Damage(int amount) {
+        health = health - amount;
+        if (health > 0) {
+            OnDamage();
+        } else {
+            // die
         }
     }
 
-    public override void Kill(GameObject whoDidIt) {
-        //base.Kill(whoDidIt);
-        deadOverlay.SetActive(true);
-    }
-
-    protected override void SetHealth() {
-        Image overlay = hudOverlay.transform.Find("Health").GetComponent<Image>();
-        overlay.sprite = healthSprites[(int)(Mathf.Max(0f, Mathf.Ceil((healthSprites.Length - 1) * health / maxHealth)))];
+    public override void OnDamage() {
+        SetHealth();
     }
 }

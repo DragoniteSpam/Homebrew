@@ -8,12 +8,10 @@ public class HomebrewGame : MonoBehaviour {
 
     [Header("Prefabs for this or that")]
     public GameObject prefabHazard;
-    public GameObject prefabFloatingText;
 
     [Header("sprites")]
     public List<Sprite> spritesMud = new List<Sprite>();
     public List<Sprite> spritesMagma = new List<Sprite>();
-    public Sprite[] spritesHealth; // there should be exactly four of these
 
     public static HomebrewGame Me;
     void Awake() {
@@ -40,22 +38,5 @@ public class HomebrewGame : MonoBehaviour {
         get {
             return allMobs;
         }
-    }
-
-    public static GameObject CreateFloatingText(Vector3 position, string message, Color color, float lifespan = 1f, float fadeTime = 0.6f) {
-        position.z = -5f;   /* preferably be visible in front of everything else */
-        TextMesh floatingText = Instantiate(Me.prefabFloatingText, position, Quaternion.identity).GetComponent<TextMesh>();
-        floatingText.text = message;
-        floatingText.color = color;
-
-        FloatingText floating = floatingText.GetComponent<FloatingText>();
-        floating.lifespan = lifespan;
-        floating.fadeTime = fadeTime;
-
-        return floatingText.gameObject;
-    }
-
-    public static GameObject CreateFloatingText(Vector3 position, string message, float lifespan = 1f, float fadeTime = 0.6f) {
-        return CreateFloatingText(position, message, Color.blue, lifespan, fadeTime);
     }
 }
