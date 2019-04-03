@@ -4,7 +4,7 @@ using UnityEngine;
 public class Responsive : MonoBehaviour {
     public const int BURN_RATE = 1;     // per tick
     public const float BURN_TICK_RATE = 2;  // burn ticks per second
-    public const float STATUS_DURATION = 2f;
+    public const float STATUS_DURATION = 5f;
     public const float SLOW_SPEED = 0.5f;
     public const float SLOW_SPEED_PARTIAL = 0.75f;
     
@@ -52,11 +52,13 @@ public class Responsive : MonoBehaviour {
         if (timeBurn > 0f) {
             if (timeBurn <= (timeBurnLastTick - 0.5f)) {
                 timeBurnLastTick = timeBurn;
+                timeBurn = timeBurn - Time.deltaTime;
                 health = health - BURN_RATE;
                 OnDamage(BURN_RATE);
                 speedFactor = SLOW_SPEED_PARTIAL;
             }
         } else {
+            Unburn();
             speedFactor = 1f;
         }
         if (timeSlow > 0f) {
@@ -112,11 +114,28 @@ public class Responsive : MonoBehaviour {
     }
 
     public void Burn() {
-        timeBurn = STATUS_DURATION;
-        timeBurnLastTick = timeBurn;
+        // continuously re-burning yourself would keep the burn timer from ticking down, which would be a problem
+        // because it would keep getting reset before you could take damage - if something is still trying to burn
+        // you after you cool off it'll re-burn you, but that's all
+        if (timeBurn <=0) {
+            timeBurn = STATUS_DURATION;
+            timeBurnLastTick = STATUS_DURATION;
+
+            Material material = GetComponent<Renderer>().material;
+            material.color = Color.Lerp(material.color, Color.red, 0.5f);
+        }
     }
 
     public void Slow() {
         timeSlow = STATUS_DURATION;
+    }
+
+    public void Unburn() {
+        Material material = GetComponent<Renderer>().material;
+        material.color = Color.white;
+    }
+
+    public void Unslow() {
+
     }
 }

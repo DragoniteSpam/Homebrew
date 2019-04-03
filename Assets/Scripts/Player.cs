@@ -383,6 +383,6 @@ public class Player : Responsive {
 
     protected override void SetHealth() {
         Image overlay = hudOverlay.transform.Find("Health").GetComponent<Image>();
-        overlay.sprite = healthSprites[(int)(Mathf.Ceil((healthSprites.Length - 1) * health / maxHealth))];
+        overlay.sprite = healthSprites[(int)(Mathf.Max(0f, Mathf.Ceil((healthSprites.Length - 1) * health / maxHealth)))];
     }
 }
