@@ -6,17 +6,21 @@ public class Responsive : MonoBehaviour {
     public const float STATUS_DURATION = 2f;
     public const float SLOW_SPEED = 0.5f;
     public const float SLOW_SPEED_PARTIAL = 0.75f;
-
-    public float health = 1;
+    
+    public float maxHealth = 1;
     protected List<GameObject> healthPieces;
     protected float speedFactor = 1f;
 
     public List<Elements> weaknesses = new List<Elements>();
 
+    protected float health;
+
     private float timeBurn;
     private float timeSlow;
 
     protected virtual void Awake() {
+        health = maxHealth;
+
         healthPieces = new List<GameObject>();
         // by default don't show the health pieces
 
@@ -83,7 +87,7 @@ public class Responsive : MonoBehaviour {
         }
     }
 
-    protected void SetHealth() {
+    protected virtual void SetHealth() {
         int total = (int)Mathf.Ceil(health / 4f);
 
         foreach (GameObject sprite in healthPieces) {

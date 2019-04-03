@@ -23,6 +23,9 @@ public class Player : Responsive {
 
     public GameObject selectorOverlay;
     public GameObject deadOverlay;
+    public GameObject hudOverlay;
+
+    public Sprite[] healthSprites;
 
     public Elements[] elements = new Elements[2] {
         Elements.FIRE, Elements.NONE
@@ -46,6 +49,10 @@ public class Player : Responsive {
     // Use this for initialization
     protected override void Awake() {
         base.Awake();
+
+        if (((healthSprites.Length - 1) % maxHealth > 0) && (maxHealth % (healthSprites.Length - 1) > 0)) {
+            Debug.LogWarning("Player's maxHealth and the number of health sprites don't divide evenly into each other. Imprecision in the display of the health meter may occur.");
+        }
 
         if (Me == null) {
             Me = this;
@@ -371,5 +378,10 @@ public class Player : Responsive {
     public override void Kill(GameObject whoDidIt) {
         //base.Kill(whoDidIt);
         deadOverlay.SetActive(true);
+    }
+
+    protected override void SetHealth() {
+        Image overlay = hudOverlay.transform.Find("Health").GetComponent<Image>();
+        overlay.sprite = healthSprites[(int)(Mathf.Ceil((healthSprites.Length - 1) * health / maxHealth))];
     }
 }
