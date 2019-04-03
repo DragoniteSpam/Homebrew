@@ -364,14 +364,15 @@ public class Player : Responsive {
             AutoIFrames();
             health = health - amount;
             if (health > 0) {
-                OnDamage();
+                OnDamage(amount);
             } else {
                 Kill(null);
             }
         }
     }
 
-    public override void OnDamage() {
+    public override void OnDamage(int amount) {
+        base.OnDamage(amount);
         SetHealth();
     }
 

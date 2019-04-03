@@ -2,20 +2,22 @@
 using UnityEngine;
 
 public class Responsive : MonoBehaviour {
-    public const float BURN_RATE = 0.5f;
+    public const int BURN_RATE = 1;     // per tick
+    public const float BURN_TICK_RATE = 2;  // burn ticks per second
     public const float STATUS_DURATION = 2f;
     public const float SLOW_SPEED = 0.5f;
     public const float SLOW_SPEED_PARTIAL = 0.75f;
     
-    public float maxHealth = 1;
+    public int maxHealth = 1;
     protected List<GameObject> healthPieces;
     protected float speedFactor = 1f;
 
     public List<Elements> weaknesses = new List<Elements>();
 
-    protected float health;
+    protected int health;
 
     private float timeBurn;
+    private float timeBurnLastTick;
     private float timeSlow;
 
     protected virtual void Awake() {
@@ -25,6 +27,7 @@ public class Responsive : MonoBehaviour {
         // by default don't show the health pieces
 
         timeBurn = 0f;
+        timeBurnLastTick = 0f;
         timeSlow = 0f;
     }
 
@@ -47,9 +50,12 @@ public class Responsive : MonoBehaviour {
         timeBurn = timeBurn - Time.deltaTime;
         timeSlow = timeSlow - Time.deltaTime;
         if (timeBurn > 0f) {
-            health = health - BURN_RATE * Time.deltaTime;
-            OnDamage();
-            speedFactor = SLOW_SPEED_PARTIAL;
+            if (timeBurn <= (timeBurnLastTick - 0.5f)) {
+                timeBurnLastTick = timeBurn;
+                health = health - BURN_RATE;
+                OnDamage(BURN_RATE);
+                speedFactor = SLOW_SPEED_PARTIAL;
+            }
         } else {
             speedFactor = 1f;
         }
@@ -76,8 +82,8 @@ public class Responsive : MonoBehaviour {
         }
     }
 
-    public virtual void OnDamage() {
-        
+    public virtual void OnDamage(int amount) {
+        HomebrewGame.CreateFloatingText(transform.position, amount + "", Color.red);
     }
 
     protected void UniversalInteraction(int potionFlags) {
@@ -107,6 +113,7 @@ public class Responsive : MonoBehaviour {
 
     public void Burn() {
         timeBurn = STATUS_DURATION;
+        timeBurnLastTick = timeBurn;
     }
 
     public void Slow() {

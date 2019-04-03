@@ -40,7 +40,8 @@ public class Enemy : Responsive {
         SetHealth();
     }
 
-    public override void OnDamage() {
+    public override void OnDamage(int amount) {
+        base.OnDamage(amount);
         SetHealth();
     }
 }
