@@ -211,7 +211,7 @@ public class Player : Responsive {
             Vector3 mousePos3d = Camera.main.ScreenToWorldPoint(mousePos2D);
             Vector3 mouseDelta = mousePos3d - transform.position;
 
-            if (Input.GetButtonUp("Potion Chuck")) {
+            if (aimingMode && Input.GetButtonUp("Potion Chuck")) {
                 aimingMode = false;
 
                 Vector3 pvelocity = mouseDelta;
