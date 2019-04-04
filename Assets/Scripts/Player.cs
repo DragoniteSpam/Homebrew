@@ -227,7 +227,7 @@ public class Player : Responsive {
                 reticle.SetActive(false);
             }
 
-            if (Input.GetButtonDown("Potion Chuck")) {
+            if (aimingMode && Input.GetButtonDown("Potion Chuck")) {
                 //the player has pressed the mouse button down while over the slingshot 
                 aimingMode = true;
 
