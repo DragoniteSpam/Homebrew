@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951e8a774d6c2dd48bf543e68fa309b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  health: 1
   weaknesses: 06000000
   maxSpeed: 4
 --- !u!114 &95888147
@@ -596,7 +596,7 @@ SpriteRenderer:
   m_Size: {x: 0.5, y: 0.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1001 &259930407
 Prefab:
@@ -1071,7 +1071,7 @@ SpriteRenderer:
   m_Size: {x: 0.5, y: 0.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &431208752
 GameObject:
@@ -1343,7 +1343,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.680001, y: -3.2025013, z: -10}
+  m_LocalPosition: {x: 5.1450005, y: -3.2025013, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1454,7 +1454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5d861c30ead1145828a1ad0d9c38c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  health: 1
   weaknesses: 02000000
 --- !u!50 &625412778
 Rigidbody2D:
@@ -1568,7 +1568,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 758514055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.680001, y: -3.2025013, z: -10}
+  m_LocalPosition: {x: 5.1450005, y: -3.2025013, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 29946551}
@@ -2030,8 +2030,6 @@ MonoBehaviour:
     type: 2}
   prefabHazard: {fileID: 1586479316095546, guid: aa985f9a91fd9324796d12c477c748c9,
     type: 2}
-  prefabFloatingText: {fileID: 1311535171960638, guid: b667b90c7f8cd1d4692efebb6cb8988f,
-    type: 2}
   spritesMud:
   - {fileID: 21300242, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
   - {fileID: 21300244, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
@@ -2042,11 +2040,6 @@ MonoBehaviour:
   - {fileID: 21300244, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
   - {fileID: 21300246, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
   - {fileID: 21300248, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  spritesHealth:
-  - {fileID: 21300258, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300348, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300254, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300256, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
 --- !u!1 &1152413870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,7 +2807,7 @@ SpriteRenderer:
   m_Size: {x: 0.5, y: 0.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!114 &1859701970
 MonoBehaviour:
@@ -3148,7 +3141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5d861c30ead1145828a1ad0d9c38c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  health: 1
   weaknesses: 04000000
 --- !u!70 &1983752293
 CapsuleCollider2D:
@@ -3313,7 +3306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14596d9e58ab70948962585276eaa57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 9
+  health: 1
   weaknesses: 
   maxSpeed: 4
   friction: 0.2
@@ -3325,19 +3318,6 @@ MonoBehaviour:
   launchRadius: 1
   reticle: {fileID: 1517261720}
   selectorOverlay: {fileID: 1152413870}
-  deadOverlay: {fileID: 1798338154}
-  hudOverlay: {fileID: 1261450785}
-  healthSprites:
-  - {fileID: 21300156, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300154, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300152, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300150, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300148, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300146, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300144, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300142, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300140, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
-  - {fileID: 21300138, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
   elements: 0200000000000000
   elementText:
   - {fileID: 1742040363}
@@ -3409,7 +3389,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.29, y: 0.52}
+  m_Size: {x: 0.2, y: 0.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
