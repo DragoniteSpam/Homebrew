@@ -26,7 +26,16 @@ public class Enemy : Responsive {
             Player.Me.Damage(1);
         }
     }
-    
+
+    public override void Interact(int potionFlags) {
+        int startingHealth = health;
+        base.Interact(potionFlags);
+        if (startingHealth == health) {
+            // please make something better for this
+            HomebrewGame.CreateFloatingText(transform.position, ":(", Color.white);
+        }
+    }
+
     // this was for something at some point
     protected virtual void OnCollisionEnter2D(Collision2D other) {
         HomebrewFlags flagData = other.gameObject.GetComponent<HomebrewFlags>();
@@ -37,10 +46,6 @@ public class Enemy : Responsive {
     public override void Kill(GameObject who) {
         base.Kill(who);
         HomebrewGame.RemoveMob(gameObject);
-    }
-
-    public override void Interact(int potionFlags) {
-        base.Interact(potionFlags);
     }
 
     protected override void SetHealth() {
