@@ -2,11 +2,11 @@ fileFormatVersion: 2
 guid: ee13da6d88fd06e4d9340ff649a6719a
 TextureImporter:
   fileIDToRecycleName:
-    21300000: homebrew1_0
-    21300002: homebrew1_1
-    21300004: homebrew1_2
-    21300006: homebrew1_3
-    21300008: homebrew1_4
+    21300000: bottlethrow1
+    21300002: bottlethrow3
+    21300004: bottlethrow5
+    21300006: bottlethrow7
+    21300008: bottlethrow8
     21300010: homebrew1_5
     21300012: homebrew1_6
     21300014: homebrew1_7
@@ -41,81 +41,81 @@ TextureImporter:
     21300072: homebrew1_37
     21300074: homebrew1_38
     21300076: homebrew1_39
-    21300078: homebrew1_41
-    21300080: homebrew1_45
-    21300082: homebrew1_46
-    21300084: homebrew1_47
-    21300086: homebrew1_48
-    21300088: homebrew1_49
-    21300090: homebrew1_50
-    21300092: homebrew1_52
-    21300094: homebrew1_53
-    21300096: homebrew1_56
-    21300098: homebrew1_57
-    21300100: homebrew1_58
-    21300102: homebrew1_59
-    21300104: homebrew1_60
-    21300106: homebrew1_63
-    21300108: homebrew1_64
-    21300110: homebrew1_65
-    21300112: homebrew1_66
-    21300114: homebrew1_67
-    21300116: homebrew1_68
-    21300118: homebrew1_69
-    21300120: homebrew1_70
-    21300122: homebrew1_71
-    21300124: homebrew1_72
-    21300126: homebrew1_73
-    21300128: homebrew1_74
-    21300130: homebrew1_75
-    21300132: homebrew1_76
-    21300134: homebrew1_77
-    21300136: homebrew1_78
-    21300138: homebrew1_79
-    21300140: homebrew1_80
-    21300142: homebrew1_81
-    21300144: homebrew1_82
-    21300146: homebrew1_83
-    21300148: homebrew1_84
-    21300150: homebrew1_85
-    21300152: homebrew1_86
-    21300154: homebrew1_87
-    21300156: homebrew1_88
+    21300078: reticle
+    21300080: batflap1
+    21300082: batflap2
+    21300084: batflap3
+    21300086: batflap4
+    21300088: batflap5
+    21300090: bathit
+    21300092: smog2
+    21300094: smoghit
+    21300096: smog1
+    21300098: smog3
+    21300100: smog4
+    21300102: smog5
+    21300104: smog6
+    21300106: impwalk1
+    21300108: impwalk2
+    21300110: impwalk3
+    21300112: impwalk4
+    21300114: impwalk5
+    21300116: slimejump
+    21300118: slime3
+    21300120: slimehurt
+    21300122: slime1
+    21300124: slime2
+    21300126: tentaclewhip1
+    21300128: tentaclewhip2
+    21300130: tentaclewhip3
+    21300132: tentaclewhip4
+    21300134: tentaclewhip5
+    21300136: tentaclehit
+    21300138: player health9
+    21300140: playerhealth8
+    21300142: playerhealth7
+    21300144: playerhealth6
+    21300146: playerhealth5
+    21300148: playerhealth4
+    21300150: playerhealth3
+    21300152: playerhealth2
+    21300154: playerhealth1
+    21300156: playerhealth0
     21300158: homebrew1_89
     21300160: homebrew1_90
     21300162: homebrew1_91
     21300164: homebrew1_92
-    21300166: homebrew1_93
-    21300168: homebrew1_94
-    21300170: homebrew1_95
-    21300172: homebrew1_96
-    21300174: homebrew1_97
-    21300176: homebrew1_98
-    21300178: homebrew1_100
+    21300166: playeridle2
+    21300168: playeridle3
+    21300170: playeridle4
+    21300172: playeridle5
+    21300174: playeridle6
+    21300176: playerthrow1
+    21300178: playerthrow2
     21300180: homebrew1_102
-    21300182: homebrew1_104
-    21300184: homebrew1_105
-    21300186: homebrew1_108
-    21300188: homebrew1_109
-    21300190: homebrew1_111
-    21300192: homebrew1_112
-    21300194: homebrew1_113
-    21300196: homebrew1_114
-    21300198: homebrew1_115
+    21300182: playerthrow3
+    21300184: playerthrow4
+    21300186: floatyhead3
+    21300188: floatyheadhurt
+    21300190: playerrun1
+    21300192: playerrun2
+    21300194: playerrun3
+    21300196: playerrun4
+    21300198: playerrun5
     21300200: homebrew1_116
-    21300202: homebrew1_117
-    21300204: homebrew1_118
-    21300206: homebrew1_119
-    21300208: homebrew1_120
+    21300202: playerjump1
+    21300204: playerjump2
+    21300206: playerjump3
+    21300208: playerjump4
     21300210: homebrew1_121
-    21300212: homebrew1_122
-    21300214: homebrew1_123
+    21300212: floatyhead1
+    21300214: floatyhead2
     21300216: homebrew1_126
     21300218: homebrew1_127
     21300220: homebrew1_128
-    21300222: homebrew1_129
-    21300224: homebrew1_130
-    21300226: homebrew1_131
+    21300222: firebar
+    21300224: waterbar
+    21300226: earthbar
     21300228: homebrew1_132
     21300230: homebrew1_133
     21300232: homebrew1_134
@@ -132,8 +132,8 @@ TextureImporter:
     21300254: homebrew1_145
     21300256: homebrew1_146
     21300258: homebrew1_147
-    21300260: homebrew1_148
-    21300262: homebrew1_149
+    21300260: playerhealthfull
+    21300262: playeridle1
     21300264: homebrew1_150
     21300266: homebrew1_151
     21300268: homebrew1_152
@@ -151,19 +151,19 @@ TextureImporter:
     21300292: homebrew1_171
     21300294: homebrew1_172
     21300296: homebrew1_173
-    21300298: homebrew1_32
+    21300298: bottlethrow2
     21300300: homebrew1_40
     21300302: homebrew1_42
     21300304: homebrew1_43
     21300306: homebrew1_44
     21300308: homebrew1_51
-    21300310: homebrew1_54
+    21300310: bottlethrow4
     21300312: homebrew1_55
     21300314: homebrew1_61
     21300316: homebrew1_62
     21300318: homebrew1_99
     21300320: homebrew1_101
-    21300322: homebrew1_159
+    21300322: bottlethrow6
     21300324: homebrew1_162
     21300326: homebrew1_163
     21300328: homebrew1_164
@@ -181,10 +181,22 @@ TextureImporter:
     21300352: homebrew1_175
     21300354: homebrew1_176
     21300356: homebrew1_177
-    21300358: homebrew1_178
-    21300360: homebrew1_179
-    21300362: homebrew1_180
-    21300364: homebrew1_181
+    21300358: fireicon
+    21300360: watericon
+    21300362: earthicon
+    21300364: batidle
+    21300366: bottledestroy1
+    21300368: bottledestroy2
+    21300370: bottledestroy3
+    21300372: bottledestroy4
+    21300374: bottledestroy5
+    21300376: bottledestroy6
+    21300378: fire1
+    21300380: fire2
+    21300382: fire3
+    21300384: fire4
+    21300386: fire5
+    21300388: fire6
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -265,7 +277,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: homebrew1_0
+      name: bottlethrow1
       rect:
         serializedVersion: 2
         x: 45
@@ -285,7 +297,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_1
+      name: bottlethrow3
       rect:
         serializedVersion: 2
         x: 56
@@ -305,7 +317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_2
+      name: bottlethrow5
       rect:
         serializedVersion: 2
         x: 70
@@ -325,7 +337,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_3
+      name: bottlethrow7
       rect:
         serializedVersion: 2
         x: 80
@@ -345,7 +357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_4
+      name: bottlethrow8
       rect:
         serializedVersion: 2
         x: 87
@@ -1045,7 +1057,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_41
+      name: reticle
       rect:
         serializedVersion: 2
         x: 61
@@ -1065,7 +1077,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_45
+      name: batflap1
       rect:
         serializedVersion: 2
         x: 71
@@ -1085,7 +1097,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_46
+      name: batflap2
       rect:
         serializedVersion: 2
         x: 106
@@ -1105,7 +1117,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_47
+      name: batflap3
       rect:
         serializedVersion: 2
         x: 152
@@ -1125,7 +1137,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_48
+      name: batflap4
       rect:
         serializedVersion: 2
         x: 200
@@ -1145,7 +1157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_49
+      name: batflap5
       rect:
         serializedVersion: 2
         x: 246
@@ -1165,7 +1177,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_50
+      name: bathit
       rect:
         serializedVersion: 2
         x: 280
@@ -1185,7 +1197,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_52
+      name: smog2
       rect:
         serializedVersion: 2
         x: 92
@@ -1205,7 +1217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_53
+      name: smoghit
       rect:
         serializedVersion: 2
         x: 489
@@ -1225,7 +1237,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_56
+      name: smog1
       rect:
         serializedVersion: 2
         x: 29
@@ -1245,7 +1257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_57
+      name: smog3
       rect:
         serializedVersion: 2
         x: 178
@@ -1265,7 +1277,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_58
+      name: smog4
       rect:
         serializedVersion: 2
         x: 254
@@ -1285,7 +1297,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_59
+      name: smog5
       rect:
         serializedVersion: 2
         x: 318
@@ -1305,7 +1317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_60
+      name: smog6
       rect:
         serializedVersion: 2
         x: 397
@@ -1325,7 +1337,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_63
+      name: impwalk1
       rect:
         serializedVersion: 2
         x: 42
@@ -1345,7 +1357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_64
+      name: impwalk2
       rect:
         serializedVersion: 2
         x: 96
@@ -1365,7 +1377,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_65
+      name: impwalk3
       rect:
         serializedVersion: 2
         x: 155
@@ -1385,7 +1397,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_66
+      name: impwalk4
       rect:
         serializedVersion: 2
         x: 202
@@ -1405,7 +1417,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_67
+      name: impwalk5
       rect:
         serializedVersion: 2
         x: 264
@@ -1425,7 +1437,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_68
+      name: slimejump
       rect:
         serializedVersion: 2
         x: 437
@@ -1445,7 +1457,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_69
+      name: slime3
       rect:
         serializedVersion: 2
         x: 478
@@ -1465,7 +1477,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_70
+      name: slimehurt
       rect:
         serializedVersion: 2
         x: 514
@@ -1485,11 +1497,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_71
+      name: slime1
       rect:
         serializedVersion: 2
         x: 347
-        y: 1024
+        y: 1023
         width: 30
         height: 15
       alignment: 0
@@ -1505,7 +1517,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_72
+      name: slime2
       rect:
         serializedVersion: 2
         x: 395
@@ -1525,7 +1537,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_73
+      name: tentaclewhip1
       rect:
         serializedVersion: 2
         x: 21
@@ -1545,7 +1557,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_74
+      name: tentaclewhip2
       rect:
         serializedVersion: 2
         x: 75
@@ -1565,7 +1577,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_75
+      name: tentaclewhip3
       rect:
         serializedVersion: 2
         x: 143
@@ -1585,7 +1597,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_76
+      name: tentaclewhip4
       rect:
         serializedVersion: 2
         x: 193
@@ -1605,7 +1617,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_77
+      name: tentaclewhip5
       rect:
         serializedVersion: 2
         x: 245
@@ -1625,7 +1637,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_78
+      name: tentaclehit
       rect:
         serializedVersion: 2
         x: 328
@@ -1645,7 +1657,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_79
+      name: player health9
       rect:
         serializedVersion: 2
         x: 400
@@ -1665,11 +1677,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_80
+      name: playerhealth8
       rect:
         serializedVersion: 2
         x: 412
-        y: 925
+        y: 924
         width: 8
         height: 44
       alignment: 0
@@ -1685,7 +1697,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_81
+      name: playerhealth7
       rect:
         serializedVersion: 2
         x: 424
@@ -1705,7 +1717,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_82
+      name: playerhealth6
       rect:
         serializedVersion: 2
         x: 436
@@ -1725,7 +1737,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_83
+      name: playerhealth5
       rect:
         serializedVersion: 2
         x: 448
@@ -1745,7 +1757,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_84
+      name: playerhealth4
       rect:
         serializedVersion: 2
         x: 460
@@ -1765,7 +1777,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_85
+      name: playerhealth3
       rect:
         serializedVersion: 2
         x: 472
@@ -1785,7 +1797,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_86
+      name: playerhealth2
       rect:
         serializedVersion: 2
         x: 484
@@ -1805,7 +1817,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_87
+      name: playerhealth1
       rect:
         serializedVersion: 2
         x: 496
@@ -1825,7 +1837,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_88
+      name: playerhealth0
       rect:
         serializedVersion: 2
         x: 508
@@ -1925,7 +1937,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_93
+      name: playeridle2
       rect:
         serializedVersion: 2
         x: 393
@@ -1945,7 +1957,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_94
+      name: playeridle3
       rect:
         serializedVersion: 2
         x: 434
@@ -1965,7 +1977,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_95
+      name: playeridle4
       rect:
         serializedVersion: 2
         x: 470
@@ -1985,7 +1997,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_96
+      name: playeridle5
       rect:
         serializedVersion: 2
         x: 511
@@ -2005,7 +2017,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_97
+      name: playeridle6
       rect:
         serializedVersion: 2
         x: 548
@@ -2025,7 +2037,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_98
+      name: playerthrow1
       rect:
         serializedVersion: 2
         x: 604
@@ -2045,7 +2057,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_100
+      name: playerthrow2
       rect:
         serializedVersion: 2
         x: 639
@@ -2085,11 +2097,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_104
+      name: playerthrow3
       rect:
         serializedVersion: 2
         x: 671
-        y: 835
+        y: 834
         width: 25
         height: 38
       alignment: 9
@@ -2105,7 +2117,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_105
+      name: playerthrow4
       rect:
         serializedVersion: 2
         x: 701
@@ -2125,7 +2137,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_108
+      name: floatyhead3
       rect:
         serializedVersion: 2
         x: 116
@@ -2145,7 +2157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_109
+      name: floatyheadhurt
       rect:
         serializedVersion: 2
         x: 160
@@ -2165,7 +2177,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_111
+      name: playerrun1
       rect:
         serializedVersion: 2
         x: 434
@@ -2185,7 +2197,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_112
+      name: playerrun2
       rect:
         serializedVersion: 2
         x: 491
@@ -2205,7 +2217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_113
+      name: playerrun3
       rect:
         serializedVersion: 2
         x: 544
@@ -2225,7 +2237,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_114
+      name: playerrun4
       rect:
         serializedVersion: 2
         x: 598
@@ -2245,7 +2257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_115
+      name: playerrun5
       rect:
         serializedVersion: 2
         x: 652
@@ -2285,10 +2297,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_117
+      name: playerjump1
       rect:
         serializedVersion: 2
-        x: 785
+        x: 787
         y: 763
         width: 32
         height: 47
@@ -2305,7 +2317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_118
+      name: playerjump2
       rect:
         serializedVersion: 2
         x: 817
@@ -2325,7 +2337,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_119
+      name: playerjump3
       rect:
         serializedVersion: 2
         x: 859
@@ -2345,7 +2357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_120
+      name: playerjump4
       rect:
         serializedVersion: 2
         x: 893
@@ -2365,11 +2377,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_122
+      name: floatyhead1
       rect:
         serializedVersion: 2
-        x: 5
-        y: 730
+        x: 8
+        y: 732
         width: 42
         height: 65
       alignment: 0
@@ -2385,7 +2397,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_123
+      name: floatyhead2
       rect:
         serializedVersion: 2
         x: 67
@@ -2405,7 +2417,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_32
+      name: bottlethrow2
       rect:
         serializedVersion: 2
         x: 51
@@ -2525,7 +2537,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_54
+      name: bottlethrow4
       rect:
         serializedVersion: 2
         x: 63
@@ -2645,7 +2657,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_159
+      name: bottlethrow6
       rect:
         serializedVersion: 2
         x: 75
@@ -2765,7 +2777,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_148
+      name: playerhealthfull
       rect:
         serializedVersion: 2
         x: 388
@@ -2785,7 +2797,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_149
+      name: playeridle1
       rect:
         serializedVersion: 2
         x: 361
@@ -3005,7 +3017,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_129
+      name: firebar
       rect:
         serializedVersion: 2
         x: 529
@@ -3025,7 +3037,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_130
+      name: waterbar
       rect:
         serializedVersion: 2
         x: 535
@@ -3045,7 +3057,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_131
+      name: earthbar
       rect:
         serializedVersion: 2
         x: 541
@@ -3825,7 +3837,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_178
+      name: fireicon
       rect:
         serializedVersion: 2
         x: 13
@@ -3845,12 +3857,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_179
+      name: watericon
       rect:
         serializedVersion: 2
-        x: 38
+        x: 42
         y: 1303
-        width: 27
+        width: 18
         height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -3865,13 +3877,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_180
+      name: earthicon
       rect:
         serializedVersion: 2
         x: 69
-        y: 1304
+        y: 1306
         width: 23
-        height: 23
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3885,7 +3897,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: homebrew1_181
+      name: batidle
       rect:
         serializedVersion: 2
         x: 340
@@ -3900,6 +3912,246 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 8046949fd922bb94b87a19d65094863e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bottledestroy1
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 1479
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b9709d6007072e48b969b5c0ad9748a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bottledestroy2
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 1479
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 106e19215a946674baa5fa1362b4d43e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bottledestroy3
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1480
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59a7e1f275792d94081e27275ebf90aa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bottledestroy4
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 1480
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e694f074943f344da3831896f1eaf5e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bottledestroy5
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1481
+        width: 22
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71f0436333c5fbf42b5560a1b84b1506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bottledestroy6
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 1481
+        width: 16
+        height: 2
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9bae40fc8c72354bad04b44a8fbc645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire1
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 862
+        width: 5
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e006da3b30632b94eb6ec0bf2c21b0cf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire2
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 863
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88bba2972111227418ac4390262464ad
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire3
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 860
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77d750741b9fe83449fb7381589d78eb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire4
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 861
+        width: 5
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18af09b0d46d5744b9b1612515db0db4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire5
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 862
+        width: 5
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c4e3e82ff8c1ee4da4e432d2fc036c7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire6
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 861
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd362fc757d89324491e7434b90fa88a
       vertices: []
       indices: 
       edges: []
