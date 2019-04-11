@@ -153,10 +153,12 @@ public class Player : Responsive {
             autodashing = false;
         }
 
-        Vector3 scale = transform.localScale;
-        scale.x = Mathf.Abs(scale.x) * Mathf.Sign(horizontal);
-        transform.localScale = scale;
-
+        if (Mathf.Abs(horizontal) > 0.25f) {
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * Mathf.Sign(horizontal);
+            transform.localScale = scale;
+        }
+        
         float f = speedFactor;
 
         if (dashing || autodashing) {
