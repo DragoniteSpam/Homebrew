@@ -310,7 +310,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 384, y: -288}
-  m_SizeDelta: {x: 640, y: 720}
+  m_SizeDelta: {x: 600, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &670802161
 MonoBehaviour:
@@ -1128,7 +1128,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 384, y: -192}
-  m_SizeDelta: {x: 640, y: 720}
+  m_SizeDelta: {x: 600, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1222421839
 MonoBehaviour:
@@ -1162,7 +1162,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Chris (chronofire901) - art, keeping Peng's insanity in check
+  m_Text: Chris (chronofire901) - art, fixing source control
 --- !u!222 &1222421840
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1201,8 +1201,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 384, y: -480}
-  m_SizeDelta: {x: 640, y: 720}
+  m_AnchoredPosition: {x: 384, y: -512}
+  m_SizeDelta: {x: 600, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1246015886
 MonoBehaviour:
@@ -1805,7 +1805,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 1024, y: -160}
-  m_SizeDelta: {x: 640, y: 720}
+  m_SizeDelta: {x: 600, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1831704123
 MonoBehaviour:
@@ -1879,7 +1879,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 384, y: -128}
-  m_SizeDelta: {x: 640, y: 720}
+  m_SizeDelta: {x: 600, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860389699
 MonoBehaviour:
@@ -1913,7 +1913,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A homework assignment for CISY290
+  m_Text: Homework assignment for CISY290
 --- !u!222 &1860389700
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1953,7 +1953,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 384, y: -352}
-  m_SizeDelta: {x: 640, y: 720}
+  m_SizeDelta: {x: 600, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1878349398
 MonoBehaviour:
@@ -2027,7 +2027,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 384, y: -416}
-  m_SizeDelta: {x: 640, y: 720}
+  m_SizeDelta: {x: 600, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1969913443
 MonoBehaviour:
@@ -2061,7 +2061,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Peng - programming, breaking source control
+  m_Text: Peng (dragonitespam) - programming, breaking source control
 --- !u!222 &1969913444
 CanvasRenderer:
   m_ObjectHideFlags: 0

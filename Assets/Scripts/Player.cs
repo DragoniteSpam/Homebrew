@@ -9,6 +9,7 @@ public class Player : Responsive {
     private const float DASH_MULTIPLIER = 2f;
     private const float SELECTOR_TIME_SCALE = 0.5f;
     private const float IFRAME_HZ = 10;
+
     public float maxSpeed = 4f;
     public float friction = 0.2f;
     public float jump = 4f;
@@ -28,7 +29,10 @@ public class Player : Responsive {
 
     public Text[] elementText;
     public Text combinedText;
-    
+    public Sprite[] playerHealthSprites;
+
+    public Image uiHealthImage;
+
     private float timeSinceJump;
     private float timeToDash;
     private bool dashing;
@@ -53,8 +57,7 @@ public class Player : Responsive {
         }
 
         HomebrewGame.AddMob(gameObject);
-
-        healthPieces = new List<GameObject>();
+        
         SetHealth();
 
         elementMap = new int[4] {
@@ -99,11 +102,11 @@ public class Player : Responsive {
         base.Update();
 
         // invincibility
-        
+
         if (IFrames > 0f) {
             IFrames = Mathf.Max(IFrames - Time.deltaTime, 0f);
 
-            Renderer body = transform.Find("Body").GetComponent<Renderer>();
+            Renderer body = GetComponent<Renderer>();
 
             if (IFrames > 0f) {
                 IFrameTime = Mathf.Max(IFrameTime - Time.deltaTime);
@@ -151,8 +154,7 @@ public class Player : Responsive {
         }
 
         Vector3 scale = transform.localScale;
- 
-
+        scale.x = Mathf.Abs(scale.x) * Mathf.Sign(horizontal);
         transform.localScale = scale;
 
         float f = speedFactor;
@@ -162,7 +164,7 @@ public class Player : Responsive {
         }
 
         Rigidbody2D plugandplay = GetComponent<Rigidbody2D>();
-
+        
         plugandplay.AddForce(new Vector2(horizontal * f, 0f), ForceMode2D.Impulse);
 
         Vector2 velocity = plugandplay.velocity;
@@ -196,12 +198,6 @@ public class Player : Responsive {
          * Throw, but only if the overlay(s) aren't shown
          */
 
-       /* if (horizontal == -1)
-        {
-            sprite.flipX = true;
-        }
-        */
-
         if (!selectorOverlay.activeInHierarchy) {
             Vector3 mousePos2D = Input.mousePosition;
             mousePos2D.z = -Camera.main.transform.position.z;
@@ -227,7 +223,7 @@ public class Player : Responsive {
                 reticle.SetActive(false);
             }
 
-            if (aimingMode && Input.GetButtonDown("Potion Chuck")) {
+            if (Input.GetButtonDown("Potion Chuck")) {
                 //the player has pressed the mouse button down while over the slingshot 
                 aimingMode = true;
 
@@ -252,7 +248,7 @@ public class Player : Responsive {
 
             GetComponent<Animator>().SetFloat("Speed", Mathf.Abs(horizontal));
         }
-        
+
 
         /*
          * Cycle selected element
@@ -313,7 +309,7 @@ public class Player : Responsive {
     public float IFrames {
         get; set;
     }
-    
+
     private float IFrameTime {
         get; set;
     }
@@ -335,7 +331,7 @@ public class Player : Responsive {
             // upper right
             if (position.y > 0f) {
                 return 0;
-            // lower right
+                // lower right
             } else {
                 return 1;
             }
@@ -343,7 +339,7 @@ public class Player : Responsive {
             // upper left
             if (position.y > 0f) {
                 return 3;
-            // lower left
+                // lower left
             } else {
                 return 2;
             }
@@ -351,8 +347,8 @@ public class Player : Responsive {
     }
 
     private void SetElementText() {
-        for (int i=0; i<elementText.Length; i++) {
-            elementText[i].text = "Element " + (i+1) + ": " + PersistentInteraction.Me.elementNames[(int)elements[i]];
+        for (int i = 0; i < elementText.Length; i++) {
+            elementText[i].text = "Element " + (i + 1) + ": " + PersistentInteraction.Me.elementNames[(int)elements[i]];
             // this is an arbitrary color to indicate the active element, DO SOMETHING LESS AMBIGUOUS LATER
             elementText[i].color = (activeElement == i) ? Color.cyan : Color.white;
         }
@@ -360,16 +356,23 @@ public class Player : Responsive {
         combinedText.text = "}   " + PersistentInteraction.Me.Data(elements[0], elements[1]).Name;
     }
 
-    public void Damage(int amount) {
-        health = health - amount;
-        if (health > 0) {
-            OnDamage();
-        } else {
-            // die
+    public virtual void Damage(int amount) {
+        if (IFrames <= 0f) {
+            health = health - amount;
+            AutoIFrames();
+            if (health > 0) {
+                OnDamage(amount);
+            } else {
+                // die
+            }
         }
     }
 
-    public override void OnDamage() {
-        SetHealth();
+    public override void OnDamage(int amount) {
+        base.OnDamage(amount);
+    }
+
+    protected override void SetHealth() {
+        uiHealthImage.sprite = playerHealthSprites[health];
     }
 }

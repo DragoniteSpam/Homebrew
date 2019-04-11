@@ -3,10 +3,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(HomebrewFlags))]
 public class Enemy : Responsive {
-    new protected static bool showHealth = true;
-
+    protected SpriteRenderer healthBar;
     protected override void Awake() {
         base.Awake();
+
+        healthBar = Instantiate(HomebrewGame.Me.prefabEnemyHealth).GetComponent<SpriteRenderer>();
+        healthBar.transform.SetParent(transform, false);
 
         GetComponent<HomebrewFlags>().Set(Elements.PLAYER);
 
@@ -39,7 +41,10 @@ public class Enemy : Responsive {
 
     public override void Interact(int potionFlags) {
         base.Interact(potionFlags);
-        SetHealth();
+    }
+
+    protected override void SetHealth() {
+        healthBar.sprite = HomebrewGame.Me.spritesHealth[(int)maxHealth].images[health];
     }
 
     // only un-comment if you want to change this

@@ -1,59 +1,85 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Responsive : MonoBehaviour {
-    public const float BURN_RATE = 0.5f;
-    public const float STATUS_DURATION = 2f;
-    public const float SLOW_SPEED = 0.5f;
-    public const float SLOW_SPEED_PARTIAL = 0.75f;
+public enum MaxHealthValues {
+    ONE,
+    TWO,
+    FOUR,
+    EIGHT,
+    TEN,
+    // ...
+    MAXIMUM,
+}
 
-    public float health = 1;
-    protected List<GameObject> healthPieces;
+public class Responsive : MonoBehaviour {
+    // this can't be static because c# doesn't know if it's a constant value or not,
+    // but i'm naming it with capital letters anyway because you should treat it that way
+    public static int[] HEALTH_VALUES = new int[(int)MaxHealthValues.MAXIMUM] {
+        1, 2, 4, 8, 10
+    };
+
+    public const int BURN_RATE = 1;                 // damage per tick
+    public const float BURN_TICK_RATE = 2f;         // burn ticks per second
+    public const float BURN_DURATION = 2f;          // seconds
+    public const float SLOW_DURATION = 0.25f;       // seconds
+    public const float SLOW_SPEED = 0.5f;           // fraction
+    public const float SLOW_SPEED_PARTIAL = 0.75f;  // fraction
+
+    public MaxHealthValues maxHealth = MaxHealthValues.FOUR;
+    protected int health = 1;
     protected float speedFactor = 1f;
 
     public List<Elements> weaknesses = new List<Elements>();
 
     private float timeBurn;
     private float timeSlow;
+    private float timeBurnLastTick;
 
     protected virtual void Awake() {
-        healthPieces = new List<GameObject>();
-        // by default don't show the health pieces
+        health = HEALTH_VALUES[(int)maxHealth];
 
         timeBurn = 0f;
         timeSlow = 0f;
+        timeBurnLastTick = 0f;
     }
 
     protected virtual void Update() {
         // please remember to run this at some point in every derived class
 
-        // i really dont like this but i procrastinated and don't have time to come up with something
-        // less awful
-        if (GetComponent<HomebrewFlags>().Get(Elements.PLAYER)) {
-            Collider2D collider = GetComponentInChildren<Collider2D>();
-            foreach (PhysicalBottle bottle in PhysicalBottle.allBottles) {
-                if (collider.bounds.Contains(bottle.transform.position) && bottle.owner != gameObject) {
-                    Interact(bottle.Flags);
-                    UniversalInteraction(bottle.Flags);
-                    Destroy(bottle.gameObject);
-                }
+        Collider2D collider = GetComponentInChildren<Collider2D>();
+        foreach (PhysicalBottle bottle in PhysicalBottle.allBottles) {
+            if (collider.bounds.Contains(bottle.transform.position) && bottle.owner != gameObject) {
+                Interact(bottle.Flags);
+                UniversalInteraction(bottle.Flags);
+                Destroy(bottle.gameObject);
             }
         }
-        
+
         timeBurn = timeBurn - Time.deltaTime;
         timeSlow = timeSlow - Time.deltaTime;
+
         if (timeBurn > 0f) {
-            health = health - BURN_RATE * Time.deltaTime;
-            OnDamage();
-            speedFactor = SLOW_SPEED_PARTIAL;
+            if (timeBurn <= (timeBurnLastTick - 0.5f)) {
+                timeBurnLastTick = timeBurn;
+                Damage(BURN_RATE);
+            }
         } else {
-            speedFactor = 1f;
+            Unburn();
         }
+
         if (timeSlow > 0f) {
             speedFactor = SLOW_SPEED;
         } else {
             speedFactor = 1f;
         }
+    }
+
+    public virtual void Damage(int amount, GameObject whoDidIt = null) {
+        health = health - amount;
+        if (health <= 0) {
+            Kill(whoDidIt);
+        }
+        OnDamage(amount);
     }
 
     public virtual void Kill(GameObject whoDidIt) {
@@ -65,15 +91,14 @@ public class Responsive : MonoBehaviour {
 
         foreach (Elements element in weaknesses) {
             if (PersistentInteraction.Recognized(potionFlags, element)) {
-                if (--health <= 0) {
-                    Kill(null);
-                }
+                Damage(1);
             }
         }
     }
 
-    public virtual void OnDamage() {
-        
+    public virtual void OnDamage(int amount) {
+        HomebrewGame.CreateFloatingText(transform.position, amount + "", Color.red);
+        SetHealth();
     }
 
     protected void UniversalInteraction(int potionFlags) {
@@ -83,29 +108,26 @@ public class Responsive : MonoBehaviour {
         }
     }
 
-    protected void SetHealth() {
-        int total = (int)Mathf.Ceil(health / 4f);
-
-        foreach (GameObject sprite in healthPieces) {
-            Destroy(sprite);
-        }
-
-        healthPieces.Clear();
-
-        for (int i = 0; i < total; i++) {
-            GameObject piece = Instantiate(HomebrewGame.Me.healthSmall);
-            piece.transform.parent = transform;
-            piece.transform.position = new Vector3(i - (total - 1) / 2f, 0.75f, -1f) + transform.position;
-            piece.GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(Mathf.Min(0.75f, Mathf.Ceil((health - 1 - i * 4) / 4f)), 0f));
-            healthPieces.Add(piece);
-        }
+    protected virtual void SetHealth() {
     }
 
     public void Burn() {
-        timeBurn = STATUS_DURATION;
+        if (timeBurn <= 0f) {
+            timeBurn = BURN_DURATION;
+            timeBurnLastTick = timeBurn;
+            speedFactor = SLOW_SPEED_PARTIAL;
+            Material material = GetComponentInChildren<Renderer>().material;
+            material.color = Color.red;
+        }
     }
 
     public void Slow() {
-        timeSlow = STATUS_DURATION;
+        timeSlow = SLOW_DURATION;
+    }
+
+    public void Unburn() {
+        Material material = GetComponentInChildren<Renderer>().material;
+        material.color = Color.white;
+        speedFactor = 1f;
     }
 }
