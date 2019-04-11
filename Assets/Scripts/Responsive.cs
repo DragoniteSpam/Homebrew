@@ -19,8 +19,8 @@ public class Responsive : MonoBehaviour {
     };
 
     public const int BURN_RATE = 1;                 // damage per tick
-    public const float BURN_TICK_RATE = 2f;         // burn ticks per second
-    public const float BURN_DURATION = 2f;          // seconds
+    public const float BURN_TICK_RATE = 1f;         // burn ticks per second
+    public const float BURN_DURATION = 1f;          // seconds
     public const float SLOW_DURATION = 0.25f;       // seconds
     public const float SLOW_SPEED = 0.5f;           // fraction
     public const float SLOW_SPEED_PARTIAL = 0.75f;  // fraction
