@@ -6,7 +6,8 @@ public enum Elements {
 }
 
 public class PersistentInteraction : MonoBehaviour {
-    public string[] elementNames;
+    public string[] elementNames = new string[(int)Elements.SIZE];
+    public Sprite[] elementSprites = new Sprite[(int)Elements.SIZE];
 
     private Dictionary<int, PotionMeta> potionDataLookup;
 
@@ -16,10 +17,6 @@ public class PersistentInteraction : MonoBehaviour {
         }
 
         Me = this;
-
-        elementNames = new string[(int)Elements.SIZE] {
-            "None", "Player", "Fire", "Thunder", "Water", "Wind", "Earth"
-        };
 
         potionDataLookup = new Dictionary<int, PotionMeta> {
             // probably lerp these colors with white or something

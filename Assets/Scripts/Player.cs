@@ -348,7 +348,15 @@ public class Player : Responsive {
 
     private void SetElementText() {
         for (int i = 0; i < elementText.Length; i++) {
-            elementText[i].text = "Element " + (i + 1) + ": " + PersistentInteraction.Me.elementNames[(int)elements[i]];
+            Sprite sprite = PersistentInteraction.Me.elementSprites[(int)elements[i]];
+            if (sprite == null) {
+                elementText[i].transform.Find("Sprite").GetComponent<Image>().enabled = false;
+                elementText[i].text = "Element " + (i + 1) + ": None";
+            } else {
+                elementText[i].transform.Find("Sprite").GetComponent<Image>().enabled = true;
+                elementText[i].transform.Find("Sprite").GetComponent<Image>().sprite = sprite;
+                elementText[i].text = "Element " + (i + 1) + ":";
+            }
             // this is an arbitrary color to indicate the active element, DO SOMETHING LESS AMBIGUOUS LATER
             elementText[i].color = (activeElement == i) ? Color.cyan : Color.white;
         }
