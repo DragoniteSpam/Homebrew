@@ -101,11 +101,8 @@ public class Responsive : MonoBehaviour {
         SetHealth();
     }
 
+    // this probably isn't needed anymore but
     protected void UniversalInteraction(int potionFlags) {
-        // Not a fan but
-        if (potionFlags == PersistentInteraction.Combination(Elements.FIRE, Elements.THUNDER)) {
-            // Plasma
-        }
     }
 
     protected virtual void SetHealth() {

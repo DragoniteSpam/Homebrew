@@ -26,6 +26,9 @@ public class PhysicalBottle : MonoBehaviour {
         if (Flags == PersistentInteraction.Combination(Elements.FIRE, Elements.EARTH)) {
             HazardMagma.SpawnBlob(gameObject);
         }
+        if (Flags == PersistentInteraction.Combination(Elements.FIRE, Elements.WATER)) {
+            HazardSteam.SpawnBlob(gameObject);
+        }
     }
 
     // this will only fire for walls and floors and stuff since nothing else responds to this physics layer

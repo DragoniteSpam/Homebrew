@@ -13,12 +13,14 @@ public class HomebrewGame : MonoBehaviour {
 
     [Header("Prefabs for this or that")]
     public GameObject prefabHazard;
+    public GameObject prefabHazardGassy;
     public GameObject prefabFloatingText;
     public GameObject prefabEnemyHealth;
 
     [Header("sprites")]
     public List<Sprite> spritesMud = new List<Sprite>();
     public List<Sprite> spritesMagma = new List<Sprite>();
+    public List<Sprite> spritesSteam = new List<Sprite>();
 
     public HealthPieceWrapper[] spritesHealth = new HealthPieceWrapper[Responsive.HEALTH_VALUES.Length];
 

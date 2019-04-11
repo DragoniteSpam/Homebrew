@@ -1810,7 +1810,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1833,7 +1833,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.680001, y: -3.2025013, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2602,7 +2602,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSmall: {fileID: 1836097024762106, guid: 76673634d2f231640979e464e253a97f,
     type: 2}
-  prefabHazard: {fileID: 1586479316095546, guid: aa985f9a91fd9324796d12c477c748c9,
+  prefabHazard: {fileID: 1097913463253194, guid: aa985f9a91fd9324796d12c477c748c9,
+    type: 2}
+  prefabHazardGassy: {fileID: 1177856323467394, guid: a2a556c1cab471147b09660e96313678,
     type: 2}
   prefabFloatingText: {fileID: 1311535171960638, guid: b667b90c7f8cd1d4692efebb6cb8988f,
     type: 2}
@@ -2618,6 +2620,9 @@ MonoBehaviour:
   - {fileID: 21300244, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
   - {fileID: 21300246, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
   - {fileID: 21300248, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
+  spritesSteam:
+  - {fileID: 21300342, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
+  - {fileID: 21300344, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
   spritesHealth:
   - images: []
   - images: []
