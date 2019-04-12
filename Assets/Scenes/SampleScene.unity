@@ -386,8 +386,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 255342142}
+  m_Children: [{fileID: 255342142}]
   m_Father: {fileID: 1152413871}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1160,8 +1159,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 159448859}
+  m_Children: [{fileID: 159448859}]
   m_Father: {fileID: 431208753}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2321,8 +2319,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 150093699}
+  m_Children: [{fileID: 150093699}]
   m_Father: {fileID: 1152413871}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2560,14 +2557,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ccf326ac93f8c8488f21298c359c0db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementNames:
-  - None
-  - Player
-  - Fire
-  - Thunder
-  - Water
-  - Wind
-  - Earth
+  elementNames: [None, Player, Fire, Thunder, Water, Wind, Earth, None, Player, Fire,
+    Thunder, Water, Wind, Earth]
   elementSprites:
   - {fileID: 0}
   - {fileID: 0}
@@ -2914,8 +2905,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 138990312}
+  m_Children: [{fileID: 138990312}]
   m_Father: {fileID: 1152413871}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3075,8 +3065,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.502, y: -0.1032, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1343675557}
+  m_Children: [{fileID: 1343675557}]
   m_Father: {fileID: 2055789934}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3323,8 +3312,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 285203662}
+  m_Children: [{fileID: 285203662}]
   m_Father: {fileID: 431208753}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3789,8 +3777,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 684391113}
+  m_Children: [{fileID: 684391113}]
   m_Father: {fileID: 1152413871}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
