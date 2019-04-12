@@ -9,7 +9,7 @@ public class Hazard : MonoBehaviour {
         lifetime = DEFAULT_LIFETIME;
     }
 
-    void Update() {
+    protected virtual void Update() {
         Collider2D collider = GetComponentInChildren<Collider2D>();
 
         foreach (GameObject mob in HomebrewGame.AllMobs) {
