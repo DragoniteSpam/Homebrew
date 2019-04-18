@@ -2539,47 +2539,37 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114357407878328132, guid: 0dd85dad62769994ba19440521b76729,
-        type: 2}
-      propertyPath: weaknesses.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4083235834845154, guid: 0dd85dad62769994ba19440521b76729, type: 2}
+    - target: {fileID: 4808296206214606, guid: 0dd85dad62769994ba19440521b76729, type: 2}
       propertyPath: m_LocalPosition.x
       value: 6.43
       objectReference: {fileID: 0}
-    - target: {fileID: 4083235834845154, guid: 0dd85dad62769994ba19440521b76729, type: 2}
+    - target: {fileID: 4808296206214606, guid: 0dd85dad62769994ba19440521b76729, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.65
+      value: -2.82
       objectReference: {fileID: 0}
-    - target: {fileID: 4083235834845154, guid: 0dd85dad62769994ba19440521b76729, type: 2}
+    - target: {fileID: 4808296206214606, guid: 0dd85dad62769994ba19440521b76729, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4083235834845154, guid: 0dd85dad62769994ba19440521b76729, type: 2}
+    - target: {fileID: 4808296206214606, guid: 0dd85dad62769994ba19440521b76729, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4083235834845154, guid: 0dd85dad62769994ba19440521b76729, type: 2}
+    - target: {fileID: 4808296206214606, guid: 0dd85dad62769994ba19440521b76729, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4083235834845154, guid: 0dd85dad62769994ba19440521b76729, type: 2}
+    - target: {fileID: 4808296206214606, guid: 0dd85dad62769994ba19440521b76729, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4083235834845154, guid: 0dd85dad62769994ba19440521b76729, type: 2}
+    - target: {fileID: 4808296206214606, guid: 0dd85dad62769994ba19440521b76729, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4083235834845154, guid: 0dd85dad62769994ba19440521b76729, type: 2}
+    - target: {fileID: 4808296206214606, guid: 0dd85dad62769994ba19440521b76729, type: 2}
       propertyPath: m_RootOrder
       value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357407878328132, guid: 0dd85dad62769994ba19440521b76729,
-        type: 2}
-      propertyPath: weaknesses.Array.data[0]
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dd85dad62769994ba19440521b76729, type: 2}

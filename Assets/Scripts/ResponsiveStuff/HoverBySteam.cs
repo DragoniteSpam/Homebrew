@@ -4,10 +4,14 @@
 public class HoverBySteam : Responsive {
     private const float TOTAL_HOVER_TIME = 10f;
     private const float MOVE_TOWARDS_SPEED = 2.5f;
+    private const float SINE_MAGNITUDE = 0.08f;
+    private const float SINE_PERIOD = 4f;
 
     private Vector2 basePosition;
     private Vector2 targetPosition;
     private float activeTime = 0f;
+
+    private float t = 0f;
 
     protected override void Awake() {
         base.Awake();
@@ -30,6 +34,13 @@ public class HoverBySteam : Responsive {
         } else {
             transform.position = Vector3.MoveTowards(transform.position, basePosition, MOVE_TOWARDS_SPEED * Time.deltaTime);
         }
+
+        t = t + Time.deltaTime;
+
+        Transform rendererPosition = transform.Find("Renderer");
+        Vector3 vec3 = rendererPosition.localPosition;
+        vec3.y = SINE_MAGNITUDE * Mathf.Sin(t * Mathf.PI * 2f / SINE_PERIOD);
+        rendererPosition.localPosition = vec3;
     }
 
     public override void OnStay(int otherFlags) {
