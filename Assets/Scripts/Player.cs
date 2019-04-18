@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(HomebrewFlags))]
@@ -65,7 +64,9 @@ public class Player : Responsive {
         };
 
         ownedElements = new bool[(int)Elements.SIZE] {
-            true, false, true, false, true, false, true
+            true, false, true, false, true, false, true,
+            // combination elements
+            false, false, false
         };
 
         quadrants = new GameObject[4] {

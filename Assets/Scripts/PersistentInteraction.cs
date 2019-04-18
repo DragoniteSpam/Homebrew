@@ -2,7 +2,21 @@
 using UnityEngine;
 
 public enum Elements {
-    NONE, PLAYER, FIRE, THUNDER, WATER, WIND, EARTH, SIZE
+    // no touch
+    NONE,           // 0
+    PLAYER,         // 1
+    // elemental elements
+    FIRE,           // 2
+    THUNDER,        // 3
+    WATER,          // 4
+    WIND,           // 5
+    EARTH,          // 6
+    // combination elements
+    STEAM,          // 7
+    MAGMA,          // 8
+    MUD,            // 9
+    // no touch
+    SIZE
 }
 
 public class PersistentInteraction : MonoBehaviour {

@@ -18,6 +18,9 @@ public class HazardSteam : Hazard {
             //body.AddForce(offset * 2f/* / 1.5f*/, ForceMode2D.Impulse);
             //body.angularVelocity = Random.Range(-2f, 2f);
 
+            HomebrewFlags flags = blob.AddComponent<HomebrewFlags>();
+            flags.Set(Elements.STEAM);
+
             HazardSteam nova = blob.AddComponent<HazardSteam>();
             nova.velocity = offset;
             nova.angularVelocity = Random.Range(-0.4f, 0.4f);

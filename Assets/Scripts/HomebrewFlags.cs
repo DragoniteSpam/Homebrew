@@ -24,7 +24,7 @@ public class HomebrewFlags : MonoBehaviour {
     public static int GeneralCollisionMask() {
         return (1 << BOTTLE) | (1 << FOE) | (1 << ENVIRONMENT) | (1 << PLAYER);
     }
-
+    
     /*
      * non-static stuff (mostly)
      */
@@ -46,7 +46,7 @@ public class HomebrewFlags : MonoBehaviour {
     }
 
     public bool Get(byte what) {
-        return (Flags & (1 << what)) == 1;
+        return (Flags & (1 << what)) > 0;
     }
 
     public bool Get(Elements what) {

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(HomebrewFlags))]
 public class Hazard : MonoBehaviour {
     public const float DEFAULT_LIFETIME = 10f;
 
