@@ -140,9 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   weaknesses: 02000000
-  reactionaryObjects:
-  - {fileID: 0}
-  - {fileID: 0}
+  reactionaryObjects: []
 --- !u!114 &114129129844561012
 MonoBehaviour:
   m_ObjectHideFlags: 1
