@@ -74,6 +74,18 @@ public class Responsive : MonoBehaviour {
         }
     }
 
+    protected virtual void OnCollisionStay2D(Collision2D other) {
+        HomebrewFlags flagData = other.gameObject.GetComponent<HomebrewFlags>();
+
+        if (flagData != null) {
+            foreach (Elements element in weaknesses) {
+                if (PersistentInteraction.Recognized(flagData.Flags, element)) {
+                    OnStay(flagData.Flags);
+                }
+            }
+        }
+    }
+
     public virtual void Damage(int amount, GameObject whoDidIt = null) {
         health = health - amount;
         if (health <= 0) {
@@ -82,13 +94,14 @@ public class Responsive : MonoBehaviour {
         OnDamage(amount);
     }
 
+    public virtual void OnStay(int otherFlags) {
+    }
+
     public virtual void Kill(GameObject whoDidIt) {
         Destroy(gameObject);
     }
 
     public virtual void Interact(int potionFlags) {
-        int myFlags = GetComponent<HomebrewFlags>().Flags;
-
         foreach (Elements element in weaknesses) {
             if (PersistentInteraction.Recognized(potionFlags, element)) {
                 Damage(1);

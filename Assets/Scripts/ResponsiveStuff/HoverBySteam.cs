@@ -17,7 +17,7 @@ public class HoverBySteam : Responsive {
         Transform target = transform.Find("MoveToHere").transform;
         targetPosition = target.position;
 
-        // you don't need the target object after you've grabbed its position
+
         Destroy(target.gameObject);
     }
 
@@ -32,11 +32,8 @@ public class HoverBySteam : Responsive {
         }
     }
 
-    protected virtual void OnCollisionStay2D(Collision2D other) {
-        HomebrewFlags flagData = other.gameObject.GetComponent<HomebrewFlags>();
-        if (flagData != null && flagData.Get(Elements.STEAM)) {
-            Activate();
-        }
+    public override void OnStay(int otherFlags) {
+        Activate();
     }
 
     public override void Interact(int potionFlags) {
