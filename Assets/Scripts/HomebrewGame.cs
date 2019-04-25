@@ -42,6 +42,7 @@ public class HomebrewGame : MonoBehaviour {
 
     void Start() {
         menu = GetComponent<GameMenu>();
+        menu.UpdateUIThings();
     }
 
     public static void AddMob(GameObject what) {

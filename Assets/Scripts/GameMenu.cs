@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMenu : MonoBehaviour {
 
@@ -22,6 +23,12 @@ public class GameMenu : MonoBehaviour {
                     break;
             }
         }
+    }
+
+    public void UpdateUIThings() {
+        pauseRoot.transform.Find("Settings").transform.Find("+Movement").GetComponent<Toggle>().isOn = GameSettings.MovementStyle == MovementStyles.SNAPPY;
+        pauseRoot.transform.Find("Settings").transform.Find("+VolumeSFX").Find("Slider").GetComponent<Slider>().value = GameSettings.VolumeSFX;
+        pauseRoot.transform.Find("Settings").transform.Find("+VolumeBGM").Find("Slider").GetComponent<Slider>().value = GameSettings.VolumeBGM;
     }
 
     private PauseStages internalPauseStage = PauseStages.NONE;

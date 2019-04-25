@@ -27,4 +27,16 @@ public class TitleSettings : MonoBehaviour {
             gameObject.SetActive(false);
         }
     }
+
+    public void SettingsSnappyMovement(bool value) {
+        GameSettings.MovementStyle = value ? MovementStyles.SNAPPY : MovementStyles.SMOOTH;
+    }
+
+    public void SettingsVolumeSFX(float value) {
+        GameSettings.VolumeSFX = value;
+    }
+
+    public void SettingsVolumeMusic(float value) {
+        GameSettings.VolumeBGM = value;
+    }
 }
