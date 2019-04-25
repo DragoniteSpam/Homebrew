@@ -6,10 +6,12 @@ public class HealthPieceWrapper {
     public Sprite[] images;
 }
 
+[RequireComponent(typeof(GameMenu))]
 public class HomebrewGame : MonoBehaviour {
     private static List<GameObject> allMobs = new List<GameObject>();
 
     public GameObject healthSmall;
+    public GameMenu menu;
 
     [Header("Prefabs for this or that")]
     public GameObject prefabHazard;
@@ -23,8 +25,9 @@ public class HomebrewGame : MonoBehaviour {
     public List<Sprite> spritesSteam = new List<Sprite>();
 
     public HealthPieceWrapper[] spritesHealth = new HealthPieceWrapper[Responsive.HEALTH_VALUES.Length];
-
+    
     public static HomebrewGame Me;
+
     void Awake() {
         if (Me == null) {
             Me = this;
@@ -35,6 +38,10 @@ public class HomebrewGame : MonoBehaviour {
         // fun fact: physics uses default gravity of 0, -1, 0, but physics2d uses default
         // gravity of 0, -9.8, 0. nice, right?
         Physics2D.gravity = new Vector2(0f, -9.8f * 2f);
+    }
+
+    void Start() {
+        menu = GetComponent<GameMenu>();
     }
 
     public static void AddMob(GameObject what) {

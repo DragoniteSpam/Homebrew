@@ -8,7 +8,7 @@ public class GameSettings : MonoBehaviour {
     // all of the things
 
     public static MovementStyles MovementStyle {
-        get; private set;
+        get; set;
     }
 }
 

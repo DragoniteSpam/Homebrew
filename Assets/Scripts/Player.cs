@@ -102,6 +102,11 @@ public class Player : Responsive {
     protected override void Update() {
         base.Update();
 
+        // because bad things would probably happen if you were allowed to move in the pause menu,
+        // where Time.timeScale = 0
+        if (HomebrewGame.Me.menu.IsPaused) {
+            return;
+        }
         // invincibility
 
         if (IFrames > 0f) {
@@ -125,7 +130,7 @@ public class Player : Responsive {
         /*
          * Running
          */
-
+        
         if (Mathf.Abs(horizontal) > MOVE_THRESHOLD) {
             if (Input.GetButtonDown("Run")) {
                 if (timeToDash > 0f) {
@@ -174,12 +179,12 @@ public class Player : Responsive {
         } else {
             // SNAPPY MOVEMENT
             Vector2 currentVelocity = GetComponent<Rigidbody2D>().velocity;
-            GetComponent<Rigidbody2D>().velocity = new Vector2(horizontal * f * maxSpeed, currentVelocity.y);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Round(horizontal) * f * maxSpeed, currentVelocity.y);
         }
         
         Vector2 velocity = plugandplay.velocity;
         velocity.x = Mathf.Clamp(velocity.x, -maxSpeed * f, maxSpeed * f);
-
+        
         bool grounded = Physics2D.OverlapPoint(new Vector2(transform.position.x, transform.position.y - 0.75f), HomebrewFlags.EnvironmentalCollisionMask());
 
         if (grounded) {
