@@ -20,6 +20,8 @@ public class HomebrewGame : MonoBehaviour {
     public GameObject prefabFloatingText;
     public GameObject prefabEnemyHealth;
 
+    public GameObject prefabDeadBottle;
+
     [Header("sprites")]
     public List<Sprite> spritesMud = new List<Sprite>();
     public List<Sprite> spritesMagma = new List<Sprite>();

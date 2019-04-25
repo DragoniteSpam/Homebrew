@@ -17,8 +17,9 @@ public class PhysicalBottle : MonoBehaviour {
         allBottles.Add(this);
     }
 
-    void OnDestroy() {
+    public void OnDestroy() {
         allBottles.Remove(this);
+        Instantiate(HomebrewGame.Me.prefabDeadBottle).transform.position = transform.position;
 
         if (Flags==PersistentInteraction.Combination(Elements.WATER, Elements.EARTH)) {
             HazardMud.SpawnBlob(gameObject);

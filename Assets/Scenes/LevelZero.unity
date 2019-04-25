@@ -3195,7 +3195,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3218,7 +3218,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 4.0599995, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6269,6 +6269,8 @@ MonoBehaviour:
   prefabFloatingText: {fileID: 1311535171960638, guid: b667b90c7f8cd1d4692efebb6cb8988f,
     type: 2}
   prefabEnemyHealth: {fileID: 1380929701400384, guid: 5a5ec2cfa1971bb4ea81c6a61ddb077c,
+    type: 2}
+  prefabDeadBottle: {fileID: 1695973040083674, guid: 3d3d81e5823b5e74f941d574bab0fc74,
     type: 2}
   spritesMud:
   - {fileID: 21300242, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}

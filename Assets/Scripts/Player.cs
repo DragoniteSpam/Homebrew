@@ -251,6 +251,8 @@ public class Player : Responsive {
                 reticle.SetActive(false);
 
                 GameAudio.Me.PlayBottle();
+
+
             }
 
             if (Input.GetButtonDown("Potion Chuck")) {
