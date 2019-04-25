@@ -249,6 +249,8 @@ public class Player : Responsive {
                 PersistentInteraction.ApplyToBottle(bottleClone, elements[0], elements[1], gameObject);
 
                 reticle.SetActive(false);
+
+                GameAudio.Me.emitter.PlayOneShot(GameAudio.Me.bottle, 0.15f);
             }
 
             if (Input.GetButtonDown("Potion Chuck")) {
@@ -332,6 +334,7 @@ public class Player : Responsive {
         Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
         velocity = velocity + Vector2.up * vspeed;
         GetComponent<Rigidbody2D>().velocity = velocity;
+        GameAudio.Me.emitter.PlayOneShot(GameAudio.Me.jump);
     }
 
     public static Player Me {
@@ -410,6 +413,7 @@ public class Player : Responsive {
 
     public override void OnDamage(int amount) {
         base.OnDamage(amount);
+        GameAudio.Me.emitter.PlayOneShot(GameAudio.Me.hitPlayer, 0.5f);
     }
 
     protected override void SetHealth() {
