@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   weaknesses: 02000000
+  strengths: 04000000
   reactionaryObjects: []
 --- !u!114 &114129129844561012
 MonoBehaviour:

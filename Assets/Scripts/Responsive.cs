@@ -29,7 +29,11 @@ public class Responsive : MonoBehaviour {
     protected int health = 1;
     protected float speedFactor = 1f;
 
+    [Tooltip("The usual elements that you want something to respond to")]
     public List<Elements> weaknesses = new List<Elements>();
+
+    [Tooltip("A secondary list - not used unless you want a side effect of some sort")]
+    public List<Elements> strengths = new List<Elements>();
 
     private float timeBurn;
     private float timeSlow;

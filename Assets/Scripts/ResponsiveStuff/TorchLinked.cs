@@ -19,4 +19,10 @@ public class TorchLinked : Torch {
             r.React(gameObject);
         }
     }
+
+    public override void OnFizzle() {
+        foreach (Reaction r in reactionaryObjects) {
+            r.Unreact(gameObject);
+        }
+    }
 }
