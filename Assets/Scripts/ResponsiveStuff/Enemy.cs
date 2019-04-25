@@ -65,6 +65,6 @@ public class Enemy : Responsive {
     public override void OnDamage(int amount) {
         base.OnDamage(amount);
 
-        GameAudio.Me.emitter.PlayOneShot(GameAudio.Me.hitEnemy, 0.4f);
+        GameAudio.Me.PlayHitEnemy();
     }
 }
