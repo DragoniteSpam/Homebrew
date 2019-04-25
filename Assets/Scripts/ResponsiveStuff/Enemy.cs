@@ -42,6 +42,12 @@ public class Enemy : Responsive {
         }
     }
 
+    protected virtual void Turn() {
+        Vector3 scale = transform.localScale;
+        scale.x = -scale.x;
+        transform.localScale = scale;
+    }
+
     public override void Kill(GameObject who) {
         base.Kill(who);
         HomebrewGame.RemoveMob(gameObject);

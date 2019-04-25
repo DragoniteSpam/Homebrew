@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
-public class EnemyFollow : EnemyPatrol {
+public class EnemyFollow : Enemy {
+    private const float FOLLOW_DISTANCE = 5f;
 
-    public float speed;
+    public float speed = 1f;
     private Transform target;
 
     private bool right;
@@ -18,11 +19,17 @@ public class EnemyFollow : EnemyPatrol {
     // Update is called once per frame
     protected override void Update() {
         base.Update();
-
-        if ((target.position.x < transform.position.x && right)^(target.position.x>transform.position.x && !right)) {
-            Turn();
+        
+        if (Vector2.Distance(target.position, transform.position) <= FOLLOW_DISTANCE) {
+            if ((target.position.x < transform.position.x && right) ^ (target.position.x > transform.position.x && !right)) {
+                Turn();
+            }
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), speed * Time.deltaTime);
+            Rigidbody2D body = GetComponent<Rigidbody2D>();
+            Vector2 velocity = body.velocity;
+            velocity.x = 0f;
+            body.velocity = velocity;
         }
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), speed * Time.deltaTime);
     }
 
     protected override void OnCollisionEnter2D(Collision2D other) {

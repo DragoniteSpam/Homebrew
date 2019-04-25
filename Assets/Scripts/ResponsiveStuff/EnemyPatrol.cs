@@ -30,12 +30,6 @@ public class EnemyPatrol : Enemy {
         base.OnCollisionEnter2D(other);
     }
 
-    protected virtual void Turn() {
-        Vector3 scale = transform.localScale;
-        scale.x = -scale.x;
-        transform.localScale = scale;
-    }
-
     // only un-comment if you need to override
     //    public override void Kill(GameObject who) {
     //        base.Kill(who);
