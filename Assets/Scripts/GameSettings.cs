@@ -10,6 +10,14 @@ public class GameSettings : MonoBehaviour {
     public static MovementStyles MovementStyle {
         get; set;
     }
+
+    public static float VolumeSFX {
+        get; set;
+    }
+
+    public static float VolumeBGM {
+        get; set;
+    }
 }
 
 // states
