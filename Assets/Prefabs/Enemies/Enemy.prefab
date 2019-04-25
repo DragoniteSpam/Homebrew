@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   weaknesses: 02000000
+  strengths: 
 --- !u!114 &114386125506628552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,7 +198,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300240, guid: ee13da6d88fd06e4d9340ff649a6719a, type: 3}
   m_Color: {r: 1, g: 0.49803922, b: 0, a: 1}
   m_FlipX: 0

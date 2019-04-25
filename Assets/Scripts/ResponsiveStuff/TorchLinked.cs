@@ -22,7 +22,8 @@ public class TorchLinked : Torch {
 
     public override void OnFizzle() {
         foreach (Reaction r in reactionaryObjects) {
-            r.Unreact(gameObject);
+            // this breaks and i dont have time to fix
+            //r.Unreact(gameObject);
         }
     }
 }
