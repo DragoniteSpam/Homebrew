@@ -14,7 +14,7 @@ public class EnemyBat : Enemy {
 
     // Distance where Bat turns around
 
-    public float leftAndRightEdge = 10f;
+    public float leftAndRightEdge = 4f;
 
     // Chance that the Bat will change directions
 
@@ -24,10 +24,12 @@ public class EnemyBat : Enemy {
 
     public float secondsBetweenVenomDrops = 1f;
 
+    private float startX;
+
 
     void Start()
     {
-
+        startX = transform.position.x;
         // Dropping venom every second
         Invoke("DropVenom", 2f);
     }
@@ -72,7 +74,7 @@ public class EnemyBat : Enemy {
 
         // Changing Direction Randomly is now time-based because of FixedUpdate()
 
-        if (Random.value < chanceToChangeDirections)
+        if (Random.value < chanceToChangeDirections || (Mathf.Abs(transform.position.x + speed) > Mathf.Abs(startX + leftAndRightEdge)))
         {                     
 
             speed *= -1; // Change direction

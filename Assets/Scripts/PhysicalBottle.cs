@@ -12,7 +12,7 @@ public class PhysicalBottle : MonoBehaviour {
     
     public PotionMeta metadata;
     public GameObject owner;
-
+    
     void Awake() {
         allBottles.Add(this);
     }
