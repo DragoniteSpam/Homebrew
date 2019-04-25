@@ -168,8 +168,15 @@ public class Player : Responsive {
 
         Rigidbody2D plugandplay = GetComponent<Rigidbody2D>();
         
-        plugandplay.AddForce(new Vector2(horizontal * f, 0f), ForceMode2D.Impulse);
-
+        if (GameSettings.MovementStyle == MovementStyles.SMOOTH) {
+            // SMOOTH MOVEMENT
+            plugandplay.AddForce(new Vector2(horizontal * f, 0f), ForceMode2D.Impulse);
+        } else {
+            // SNAPPY MOVEMENT
+            Vector2 currentVelocity = GetComponent<Rigidbody2D>().velocity;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(horizontal * f * maxSpeed, currentVelocity.y);
+        }
+        
         Vector2 velocity = plugandplay.velocity;
         velocity.x = Mathf.Clamp(velocity.x, -maxSpeed * f, maxSpeed * f);
 
@@ -179,8 +186,9 @@ public class Player : Responsive {
             if (Input.GetButtonDown("Jump")) {
                 timeSinceJump = 0f;
             }
-
+            
             velocity.x = Mathf.Lerp(velocity.x, 0f, friction);
+            
         }
 
         timeSinceJump = timeSinceJump + Time.deltaTime;
@@ -190,13 +198,25 @@ public class Player : Responsive {
         // after the velocity has been set, process jumping. this re-reads and resets the velocity so if
         // you do it before it's set above it'll get overwritten.
 
-        if (timeSinceJump < 0.15f && Input.GetButton("Jump")) {
-            plugandplay.gravityScale = 0f;
-            Jump();
+        if (GameSettings.MovementStyle == MovementStyles.SMOOTH) {
+            // SMOOTH MOVEMENT
+            if (timeSinceJump < 0.15f && Input.GetButton("Jump")) {
+                plugandplay.gravityScale = 0f;
+                Jump();
+            } else {
+                plugandplay.gravityScale = 1f;
+            }
         } else {
+            // SNAPPY MOVEMENT
             plugandplay.gravityScale = 1f;
+            if (grounded && Input.GetButtonDown("Jump")) {
+                // this magic number would produce *about-ish* the same jump height as holding your finger
+                // down on the button in Smooth mode
+                Jump(10f);
+                // fact: mathematics tells me the value should be more like 7.3f but that value isn't working
+                // and i don't want to touch it now
+            }
         }
-
         /*
          * Throw, but only if the overlay(s) aren't shown
          */
@@ -300,8 +320,12 @@ public class Player : Responsive {
     }
 
     private void Jump() {
+        Jump(jump);
+    }
+
+    private void Jump(float vspeed) {
         Vector2 velocity = GetComponent<Rigidbody2D>().velocity;
-        velocity = velocity + Vector2.up * jump;
+        velocity = velocity + Vector2.up * vspeed;
         GetComponent<Rigidbody2D>().velocity = velocity;
     }
 
