@@ -2745,6 +2745,22 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1390512982}
+--- !u!1 &1435232429 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1734260240581880, guid: d234a8cf3bbe46448976f14a4015cab9,
+    type: 2}
+  m_PrefabInternal: {fileID: 228971179}
+--- !u!114 &1435232430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1435232429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c1b2dd8fd4a290459c988ed798b9ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1492882371
 GameObject:
   m_ObjectHideFlags: 0
@@ -3263,7 +3279,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1435232430}
     - target: {fileID: 1019648646963266, guid: 76e48559528521f49932c197274900e6, type: 2}
       propertyPath: m_Name
       value: Button Play
@@ -3272,6 +3288,11 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: Play Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591410132520084, guid: 76e48559528521f49932c197274900e6,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BeginGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76e48559528521f49932c197274900e6, type: 2}
@@ -3509,7 +3530,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Whatever
+  m_Text: Don't Touch This
 --- !u!222 &1667710527
 CanvasRenderer:
   m_ObjectHideFlags: 0
