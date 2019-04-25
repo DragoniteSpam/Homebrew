@@ -12,6 +12,9 @@ public class GameAudio : MonoBehaviour {
 
     public static GameAudio Me;
 
+    // if you don't want certain sounds to overlap each other, do more of this
+    private float tJump = 0f;
+
     // becasue i'd rather just treat these like stati
     void Awake() {
         if (Me != null) {
@@ -33,7 +36,10 @@ public class GameAudio : MonoBehaviour {
     }
 
     public void PlayJump() {
-        emSFX.PlayOneShot(jump, 1f);
+        if (Time.time - tJump >= 1f) {
+            emSFX.PlayOneShot(jump, 1f);
+            tJump = Time.time;
+        }
     }
 
     public void PlayBottle() {
