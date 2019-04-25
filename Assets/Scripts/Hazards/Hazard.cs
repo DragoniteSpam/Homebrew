@@ -22,6 +22,12 @@ public class Hazard : MonoBehaviour {
         }
 
         lifetime = lifetime - Time.deltaTime;
+        if (lifetime < 1) {
+            Renderer renderer = GetComponentInChildren<Renderer>();
+            Color c = renderer.material.color;
+            c.a = lifetime;
+            renderer.material.color = c;
+        }
         if (lifetime <= 0) {
             Destroy(gameObject);
         }

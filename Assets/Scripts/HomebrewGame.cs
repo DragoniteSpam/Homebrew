@@ -16,6 +16,7 @@ public class HomebrewGame : MonoBehaviour {
     [Header("Prefabs for this or that")]
     public GameObject prefabHazard;
     public GameObject prefabHazardGassy;
+    public GameObject prefabHazardVenom;
     public GameObject prefabFloatingText;
     public GameObject prefabEnemyHealth;
 
