@@ -20,6 +20,7 @@ public class PhysicalBottle : MonoBehaviour {
     public void OnDestroy() {
         allBottles.Remove(this);
         Instantiate(HomebrewGame.Me.prefabDeadBottle).transform.position = transform.position;
+        GameAudio.Me.PlaySmash();
 
         if (Flags==PersistentInteraction.Combination(Elements.WATER, Elements.EARTH)) {
             HazardMud.SpawnBlob(gameObject);

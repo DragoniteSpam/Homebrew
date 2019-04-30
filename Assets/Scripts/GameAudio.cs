@@ -5,7 +5,8 @@ public class GameAudio : MonoBehaviour {
     public AudioClip hitEnemy;
     public AudioClip hitPlayer;
     public AudioClip jump;
-    public AudioClip bottle;
+    public AudioClip bottleThrow;
+    public AudioClip bottleSmash;
 
     public AudioSource emSFX;
     public AudioSource emBGM;
@@ -43,6 +44,10 @@ public class GameAudio : MonoBehaviour {
     }
 
     public void PlayBottle() {
-        emSFX.PlayOneShot(bottle, 0.15f);
+        emSFX.PlayOneShot(bottleThrow, 0.15f);
+    }
+
+    public void PlaySmash() {
+        emSFX.PlayOneShot(bottleSmash, 1f);
     }
 }

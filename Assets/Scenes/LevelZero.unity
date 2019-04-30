@@ -3195,7 +3195,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3218,7 +3218,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.5, y: 4.0599995, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9507,6 +9507,16 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 0fb1e7c1922f7fd4ca6287d955ab6a8d, type: 3}
+    - target: {fileID: 114148178763865226, guid: 64b3a058fa0eb7e429562c1ce0ff6014,
+        type: 2}
+      propertyPath: bottleThrow
+      value: 
+      objectReference: {fileID: 8300000, guid: fb5fa471dd4796140b51f04d0643aec6, type: 3}
+    - target: {fileID: 114148178763865226, guid: 64b3a058fa0eb7e429562c1ce0ff6014,
+        type: 2}
+      propertyPath: bottleSmash
+      value: 
+      objectReference: {fileID: 8300000, guid: aa6de6a82f1232541bbd780c4370e5ed, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64b3a058fa0eb7e429562c1ce0ff6014, type: 2}
   m_IsPrefabParent: 0
