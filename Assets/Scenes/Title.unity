@@ -278,7 +278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &176353427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -879,7 +879,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "David - \xAF\\_(\u30C4)_/\xAF"
+  m_Text: David - Pitch and level design
 --- !u!222 &670802162
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1665,6 +1665,11 @@ Prefab:
     - target: {fileID: 82176769821388066, guid: 64b3a058fa0eb7e429562c1ce0ff6014,
         type: 2}
       propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82176769821388066, guid: 64b3a058fa0eb7e429562c1ce0ff6014,
+        type: 2}
+      propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
